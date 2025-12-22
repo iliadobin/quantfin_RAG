@@ -1,0 +1,85 @@
+{
+  "version": "1.0",
+  "name": "StructuredExtraction",
+  "description": "Example structured extraction dataset",
+  "examples": [
+    {
+      "id": "ds5_ex001",
+      "question": "Extract the Black-Scholes formula and its components.",
+      "structured_output": {
+        "extraction_type": "formula",
+        "output_schema": {
+          "type": "object",
+          "properties": {
+            "formula": {
+              "type": "string"
+            },
+            "components": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "symbol": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "gold_output": {
+          "formula": "C = S₀N(d₁) - Ke⁻ʳᵀN(d₂)",
+          "components": [
+            {
+              "symbol": "S₀",
+              "description": "Current stock price"
+            },
+            {
+              "symbol": "K",
+              "description": "Strike price"
+            },
+            {
+              "symbol": "r",
+              "description": "Risk-free rate"
+            },
+            {
+              "symbol": "T",
+              "description": "Time to maturity"
+            },
+            {
+              "symbol": "σ",
+              "description": "Volatility"
+            }
+          ]
+        }
+      },
+      "gold_citations": [
+        {
+          "doc_id": "arxiv_example_bs",
+          "page_span": {
+            "start_page": 5,
+            "end_page": 5,
+            "start_char": null,
+            "end_char": null
+          },
+          "quote": "The Black-Scholes formula...",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": null
+        }
+      ],
+      "required_fields": [
+        "formula",
+        "components"
+      ],
+      "optional_fields": []
+    }
+  ],
+  "total_examples": 1,
+  "extraction_types_distribution": {
+    "formula": 1
+  }
+}

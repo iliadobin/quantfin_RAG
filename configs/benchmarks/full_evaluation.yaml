@@ -1,0 +1,54 @@
+# Full evaluation configuration
+#
+# Comprehensive benchmark on all datasets with LLM judge
+
+version: "1.0"
+
+corpus_profile: "public"
+
+# All datasets
+datasets:
+  - ds1
+  - ds2
+  - ds3
+  - ds4
+  - ds5
+
+# All pipelines
+pipelines:
+  - rag_v1_dense
+  - rag_v2_hybrid
+  - rag_v3_multiquery
+  - rag_v4_parent_child
+  - rag_v5_evidence
+
+pipeline_params:
+  top_k: 20
+  rerank_top_k: 10
+  temperature: 0.0
+  max_tokens: 1500
+
+evaluation:
+  compute_llm_judge: true
+  judge_batch_size: 5
+  judge_sample_rate: 1.0  # Evaluate all examples
+
+cache:
+  enable_prediction_cache: true
+  enable_embedding_cache: true
+
+output:
+  run_name: "full_eval"
+  output_dir: "data/runs"
+  save_predictions: true
+  generate_reports: true
+
+token_budget:
+  max_total_tokens: 2000000
+  warn_threshold: 1600000
+  enable_monitoring: true
+
+reproducibility:
+  seed: 42
+  deterministic: true
+

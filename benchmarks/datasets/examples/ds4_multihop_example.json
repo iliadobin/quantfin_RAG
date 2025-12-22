@@ -1,0 +1,95 @@
+{
+  "version": "1.0",
+  "name": "MultiHopDerivatives",
+  "description": "Example multi-hop reasoning questions",
+  "examples": [
+    {
+      "id": "ds4_ex001",
+      "question": "How do Delta and Gamma work together in dynamic hedging?",
+      "gold_answer": "Delta measures first-order price sensitivity, while Gamma measures the rate of change of Delta. In dynamic hedging, traders rebalance Delta exposure, with Gamma indicating how frequently rebalancing is needed.",
+      "gold_citations": [
+        {
+          "doc_id": "arxiv_example_greeks",
+          "page_span": {
+            "start_page": 12,
+            "end_page": 12,
+            "start_char": null,
+            "end_char": null
+          },
+          "quote": "Delta measures...",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": null
+        },
+        {
+          "doc_id": "arxiv_example_greeks",
+          "page_span": {
+            "start_page": 14,
+            "end_page": 14,
+            "start_char": null,
+            "end_char": null
+          },
+          "quote": "Gamma is the second derivative...",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": null
+        },
+        {
+          "doc_id": "arxiv_example_hedging",
+          "page_span": {
+            "start_page": 20,
+            "end_page": 20,
+            "start_char": null,
+            "end_char": null
+          },
+          "quote": "Dynamic hedging involves...",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": null
+        }
+      ],
+      "hops": [
+        {
+          "hop_number": 1,
+          "sub_question": "What is Delta?",
+          "required_doc_ids": [
+            "arxiv_example_greeks"
+          ],
+          "required_concepts": [
+            "delta",
+            "sensitivity"
+          ]
+        },
+        {
+          "hop_number": 2,
+          "sub_question": "What is Gamma?",
+          "required_doc_ids": [
+            "arxiv_example_greeks"
+          ],
+          "required_concepts": [
+            "gamma",
+            "second_derivative"
+          ]
+        },
+        {
+          "hop_number": 3,
+          "sub_question": "How are they used in hedging?",
+          "required_doc_ids": [
+            "arxiv_example_hedging"
+          ],
+          "required_concepts": [
+            "dynamic_hedging",
+            "rebalancing"
+          ]
+        }
+      ],
+      "reasoning_type": "sequential",
+      "min_required_sources": 2,
+      "difficulty": "hard"
+    }
+  ],
+  "total_examples": 1,
+  "reasoning_types_distribution": {
+    "sequential": 1
+  }
+}

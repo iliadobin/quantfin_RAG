@@ -1,0 +1,85 @@
+{
+  "version": "1.0",
+  "name": "FactualDerivativesQA",
+  "description": "Example factual QA dataset about derivatives pricing",
+  "examples": [
+    {
+      "id": "ds1_ex001",
+      "question": "What is the Black-Scholes formula for a European call option?",
+      "gold_answer": "The Black-Scholes formula for a European call option is C = S₀N(d₁) - Ke⁻ʳᵀN(d₂), where d₁ = [ln(S₀/K) + (r + σ²/2)T] / (σ√T) and d₂ = d₁ - σ√T.",
+      "gold_citations": [
+        {
+          "doc_id": "arxiv_example_bs",
+          "page_span": {
+            "start_page": 5,
+            "end_page": 5,
+            "start_char": null,
+            "end_char": null
+          },
+          "quote": "The Black-Scholes formula gives the price of a European call option...",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": null
+        }
+      ],
+      "topic": "black_scholes",
+      "difficulty": "medium",
+      "requires_formula": false,
+      "requires_calculation": false
+    },
+    {
+      "id": "ds1_ex002",
+      "question": "What is Delta in options trading?",
+      "gold_answer": "Delta measures the rate of change of the option price with respect to changes in the underlying asset price. For a call option, Delta ranges from 0 to 1.",
+      "gold_citations": [
+        {
+          "doc_id": "arxiv_example_greeks",
+          "page_span": {
+            "start_page": 12,
+            "end_page": 12,
+            "start_char": null,
+            "end_char": null
+          },
+          "quote": "Delta, the first derivative of the option price with respect to spot...",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": null
+        }
+      ],
+      "topic": "greeks",
+      "difficulty": "easy",
+      "requires_formula": false,
+      "requires_calculation": false
+    },
+    {
+      "id": "ds1_ex003",
+      "question": "What is the put-call parity relationship?",
+      "gold_answer": "Put-call parity states that C - P = S - Ke⁻ʳᵀ for European options, where C is call price, P is put price, S is spot price, K is strike, r is risk-free rate, and T is time to maturity.",
+      "gold_citations": [
+        {
+          "doc_id": "arxiv_example_parity",
+          "page_span": {
+            "start_page": 8,
+            "end_page": 8,
+            "start_char": null,
+            "end_char": null
+          },
+          "quote": "The put-call parity relationship holds for European options...",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": null
+        }
+      ],
+      "topic": "parity",
+      "difficulty": "medium",
+      "requires_formula": false,
+      "requires_calculation": false
+    }
+  ],
+  "total_examples": 3,
+  "topics_distribution": {
+    "black_scholes": 1,
+    "greeks": 1,
+    "parity": 1
+  }
+}

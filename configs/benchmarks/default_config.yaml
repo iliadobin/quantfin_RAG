@@ -1,0 +1,61 @@
+# Default benchmark configuration
+# 
+# This config defines parameters for running benchmarks on RAG pipelines
+
+version: "1.0"
+
+# Corpus profile to use
+corpus_profile: "public"
+
+# Datasets to use (if empty, uses all available)
+datasets:
+  - ds1  # Factual QA
+  - ds2  # Retrieval Qrels
+  - ds3  # Unanswerable/Traps
+  # - ds4  # Multi-Hop (optional)
+  # - ds5  # Structured Extraction (optional)
+
+# Pipelines to evaluate (if empty, uses all available)
+pipelines:
+  - rag_v1_dense
+  - rag_v2_hybrid
+  - rag_v3_multiquery
+  # - rag_v4_parent_child
+  # - rag_v5_evidence
+
+# Pipeline parameters
+pipeline_params:
+  top_k: 10  # Number of chunks to retrieve
+  rerank_top_k: 5  # Number of chunks after reranking
+  temperature: 0.0  # LLM temperature (0 for deterministic)
+  max_tokens: 1000  # Max tokens for answer generation
+
+# Evaluation settings
+evaluation:
+  compute_llm_judge: false  # Whether to run LLM-as-a-judge (costs tokens)
+  judge_batch_size: 5  # Batch size for LLM judge
+  judge_sample_rate: 1.0  # Sample rate for judge (1.0 = all, 0.2 = 20%)
+
+# Caching
+cache:
+  enable_prediction_cache: true  # Cache predictions for repeated runs
+  enable_embedding_cache: true  # Cache embeddings
+
+# Output
+output:
+  run_name: null  # Auto-generate if null
+  output_dir: "data/runs"
+  save_predictions: true  # Save raw predictions
+  generate_reports: true  # Generate formatted reports
+
+# Token budget (for cost control)
+token_budget:
+  max_total_tokens: 1000000  # Stop if exceeding this
+  warn_threshold: 800000  # Warn when approaching limit
+  enable_monitoring: true
+
+# Reproducibility
+reproducibility:
+  seed: 42
+  deterministic: true  # Use deterministic operations where possible
+

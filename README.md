@@ -29,7 +29,7 @@ pip install -r requirements.txt
 Создайте `.env` файл:
 
 ```bash
-cp .env.example .env
+cp env.example .env
 # Отредактируйте .env и добавьте DEEPSEEK_API_KEY
 ```
 
@@ -131,14 +131,60 @@ qa-assistant/
 
 Учебный проект. Корпус собран из публичных источников с указанием лицензий в манифесте.
 
-## TODO
+## Статус реализации
 
-- [ ] Парсинг PDF → текст + page spans
-- [ ] Чанкинг (2 стратегии)
-- [ ] Построение индексов (BM25 + vector)
-- [ ] RAG пайплайны v1–v5
-- [ ] Генерация датасетов DS1–DS5
-- [ ] Benchmark runner
-- [ ] Telegram бот
-- [ ] Тесты
+### ✅ Завершено
+
+- **Epic A**: Корпус (public profile)
+  - Сбор 17 PDF документов (~600-900 страниц)
+  - Манифест с метаданными и лицензиями
+  
+- **Epic B**: Ingest/Index  
+  - Парсинг PDF → нормализованный текст
+  - Чанкинг (2 стратегии: fixed, section-aware)
+  - Построение индексов (BM25 + vector)
+  
+- **Epic C**: RAG пайплайны v1-v5
+  - RAGv1: Dense retrieval
+  - RAGv2: Hybrid + Rerank
+  - RAGv3: Multi-query + Fusion
+  - RAGv4: Parent-child
+  - RAGv5: Evidence validation
+
+- **Epic D**: Benchmark (✅ COMPLETE)
+  - Схемы для DS1-DS5 (factual QA, retrieval, unanswerable, multi-hop, structured)
+  - Метрики: retrieval, citation, hallucination, LLM-judge
+  - Runner для matrix evaluation
+  - Отчеты: JSON, Markdown, HTML, CSV
+  - Example datasets generated and validated
+
+### 🚧 В разработке
+
+- **Epic E**: Baselines (LLM-only)
+- **Epic F**: Telegram bot MVP
+- **Epic G**: Tests и производительность
+
+### 📚 Документация
+
+- [QUICKSTART.md](QUICKSTART.md) - быстрый старт
+- [ARCHITECTURE.md](ARCHITECTURE.md) - архитектура
+- [RAG_IMPLEMENTATION_SUMMARY.md](RAG_IMPLEMENTATION_SUMMARY.md) - RAG детали
+- [BENCHMARK_IMPLEMENTATION_SUMMARY.md](BENCHMARK_IMPLEMENTATION_SUMMARY.md) - Benchmark детали
+- [EPIC_D_COMPLETION_SUMMARY.md](EPIC_D_COMPLETION_SUMMARY.md) - Epic D отчет
+- [benchmarks/README.md](benchmarks/README.md) - гайд по benchmark
+
+## Быстрый тест бенчмарка
+
+Проверить работу benchmark инфраструктуры:
+
+```bash
+# Тесты
+python scripts/test_benchmark.py
+
+# Сгенерировать примеры датасетов
+python scripts/generate_example_datasets.py
+
+# Запустить быстрый бенчмарк (когда будут готовы RAG пайплайны)
+python scripts/run_benchmark.py --quick
+```
 

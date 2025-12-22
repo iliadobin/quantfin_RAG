@@ -1,0 +1,80 @@
+{
+  "version": "1.0",
+  "name": "RetrievalQrels",
+  "description": "Example retrieval evaluation dataset",
+  "examples": [
+    {
+      "id": "ds2_ex001",
+      "query": "Black-Scholes formula components",
+      "qrels": [
+        {
+          "chunk_id": "chunk_bs_001",
+          "relevance": 2,
+          "doc_id": "arxiv_example_bs",
+          "page_span": {
+            "start_page": 5,
+            "end_page": 5,
+            "start_char": null,
+            "end_char": null
+          }
+        },
+        {
+          "chunk_id": "chunk_bs_002",
+          "relevance": 1,
+          "doc_id": "arxiv_example_bs",
+          "page_span": {
+            "start_page": 6,
+            "end_page": 6,
+            "start_char": null,
+            "end_char": null
+          }
+        },
+        {
+          "chunk_id": "chunk_other_001",
+          "relevance": 0,
+          "doc_id": "arxiv_other",
+          "page_span": {
+            "start_page": 1,
+            "end_page": 1,
+            "start_char": null,
+            "end_char": null
+          }
+        }
+      ],
+      "query_type": "formula",
+      "expected_num_relevant": 2
+    },
+    {
+      "id": "ds2_ex002",
+      "query": "What are the Greeks in options?",
+      "qrels": [
+        {
+          "chunk_id": "chunk_greeks_001",
+          "relevance": 2,
+          "doc_id": "arxiv_example_greeks",
+          "page_span": {
+            "start_page": 10,
+            "end_page": 10,
+            "start_char": null,
+            "end_char": null
+          }
+        },
+        {
+          "chunk_id": "chunk_greeks_002",
+          "relevance": 2,
+          "doc_id": "arxiv_example_greeks",
+          "page_span": {
+            "start_page": 11,
+            "end_page": 11,
+            "start_char": null,
+            "end_char": null
+          }
+        }
+      ],
+      "query_type": "definition",
+      "expected_num_relevant": 2
+    }
+  ],
+  "total_examples": 2,
+  "total_qrels": 5
+}

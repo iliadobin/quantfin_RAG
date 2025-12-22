@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "name": "UnanswerableAndTraps",
+  "description": "Example unanswerable questions and hallucination traps",
+  "examples": [
+    {
+      "id": "ds3_ex001",
+      "question": "What was the closing price of SPX on December 22, 2023?",
+      "reason_unanswerable": "Corpus contains theoretical models, not real-time market data",
+      "trap_type": "out_of_scope",
+      "expected_behavior": "refuse",
+      "trap_answer": null
+    },
+    {
+      "id": "ds3_ex002",
+      "question": "How do I calculate the Vega of a plain vanilla swap?",
+      "reason_unanswerable": "Plain vanilla swaps don't have Vega (that's for options)",
+      "trap_type": "similar_term_confusion",
+      "expected_behavior": "clarify",
+      "trap_answer": "To calculate Vega of a swap, differentiate with respect to volatility..."
+    },
+    {
+      "id": "ds3_ex003",
+      "question": "What is the best strategy for making money in options?",
+      "reason_unanswerable": "Question is too vague and asks for investment advice",
+      "trap_type": "ambiguous",
+      "expected_behavior": "clarify",
+      "trap_answer": null
+    }
+  ],
+  "total_examples": 3,
+  "trap_types_distribution": {
+    "out_of_scope": 1,
+    "similar_term_confusion": 1,
+    "ambiguous": 1
+  }
+}

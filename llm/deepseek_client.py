@@ -17,6 +17,10 @@ from pathlib import Path
 import sqlite3
 from openai import OpenAI
 from tenacity import retry, stop_after_attempt, wait_exponential
+from dotenv import load_dotenv
+
+# Load .env once (non-overriding) so DEEPSEEK_API_KEY can be provided via project root `.env`.
+load_dotenv(override=False)
 
 
 logger = logging.getLogger(__name__)
