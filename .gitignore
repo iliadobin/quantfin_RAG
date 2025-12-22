@@ -1,0 +1,36 @@
+# Environment
+.env
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Data (not in git)
+data/
+*.pdf
+*.db
+*.duckdb
+*.faiss
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+runs/
+experiments/
+
+# Temporary
+tmp/
+temp/
+cache/
+

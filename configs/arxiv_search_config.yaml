@@ -1,0 +1,75 @@
+# arXiv search configuration for building allowlist
+# Target: 15 PDF, pricing + немного risk, tutorial/lecture/survey priority
+
+categories:
+  - "q-fin.PR"  # Pricing of Securities
+  - "q-fin.MF"  # Mathematical Finance
+  - "q-fin.RM"  # Risk Management (minimal)
+
+# Search queries by topic (will be combined with OR within groups)
+search_groups:
+  risk_neutral_martingale:
+    keywords:
+      - "risk-neutral"
+      - "martingale measure"
+      - "equivalent martingale"
+      - "no-arbitrage"
+      - "arbitrage-free pricing"
+    max_results: 4
+    
+  black_scholes_greeks:
+    keywords:
+      - "Black-Scholes"
+      - "Greeks"
+      - "delta hedging"
+      - "implied volatility"
+    max_results: 3
+    
+  pde_finite_difference:
+    keywords:
+      - "finite difference"
+      - "PDE"
+      - "Crank-Nicolson"
+      - "free boundary"
+    additional_filters:
+      - "option pricing"
+    max_results: 3
+    
+  monte_carlo:
+    keywords:
+      - "Monte Carlo"
+      - "variance reduction"
+      - "control variate"
+      - "importance sampling"
+    additional_filters:
+      - "option pricing"
+    max_results: 3
+    
+  american_options:
+    keywords:
+      - "American option"
+      - "least squares Monte Carlo"
+      - "Longstaff-Schwartz"
+      - "LSMC"
+    max_results: 2
+
+# Filters
+filters:
+  min_pages: 15
+  max_pages: 100  # avoid very long monographs
+  prefer_keywords:  # in title/abstract/comments
+    - "lecture notes"
+    - "tutorial"
+    - "survey"
+    - "introduction"
+    - "review"
+  exclude_keywords:  # avoid topics
+    - "cryptocurrency"
+    - "blockchain"
+    - "high-frequency trading"
+    - "sentiment analysis"
+
+# Target total
+target_count: 15
+max_total_pages: 700  # leave ~200 pages for anchors to stay under 900
+

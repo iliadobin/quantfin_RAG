@@ -1,0 +1,23 @@
+# Anchor documents (risk/regulatory foundation)
+# These provide stable definitions and terminology
+
+anchors:
+  - id: riskmetrics_1996
+    title: "RiskMetrics Technical Document (4th Edition)"
+    source_type: industry
+    url: "https://www.msci.com/documents/10199/5915b101-4206-4ba0-aee2-3449d5c7e95a"  # example URL, verify availability
+    license: "Public domain / industry standard"
+    estimated_pages: 200
+    description: "Classic market risk methodology: VaR, volatility, correlations"
+    
+  - id: bcbs_frtb_2019
+    title: "BCBS - Minimum capital requirements for market risk (FRTB)"
+    source_type: regulatory
+    url: "https://www.bis.org/bcbs/publ/d457.pdf"
+    license: "BIS public documents"
+    estimated_pages: 150
+    description: "Basel market risk standard: definitions, requirements, sensitivities"
+
+# Note: If RiskMetrics URL is unavailable, consider alternative public risk documents
+# or BIS working papers on market risk/derivatives
+

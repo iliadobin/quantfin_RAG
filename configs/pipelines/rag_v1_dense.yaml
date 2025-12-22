@@ -1,0 +1,27 @@
+# RAGv1: Dense retrieval pipeline configuration
+
+pipeline:
+  name: RAGv1_Dense
+  version: "1.0"
+  description: "Simple dense retrieval pipeline with semantic search"
+
+retrieval:
+  type: dense
+  model: "intfloat/e5-small-v2"
+  top_k: 10
+  device: cpu
+
+generation:
+  model: "deepseek-chat"
+  temperature: 0.0
+  max_tokens: 2048
+  max_context_chunks: 10
+
+guardrails:
+  unanswerable_detection: true
+  min_retrieval_score: 0.1
+
+performance:
+  expected_latency_ms: 3100
+  expected_tokens: 500
+

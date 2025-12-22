@@ -1,0 +1,66 @@
+# RAGv3: Multi-query with template expansion pipeline configuration
+
+pipeline:
+  name: RAGv3_MultiQuery
+  version: "3.0"
+  description: "Multi-query retrieval with rule-based expansion"
+
+retrieval:
+  type: multi_query
+  base_retriever: hybrid
+  expansion_strategy: pricing  # pricing | greeks | assumptions | methods
+  max_queries: 3
+  fusion_method: rrf  # rrf | max_score
+  rrf_k: 60
+  top_k: 15
+  
+  # Base retriever config (hybrid)
+  bm25_weight: 0.5
+  dense_weight: 0.5
+  dense_model: "intfloat/e5-small-v2"
+
+rerank:
+  enabled: true  # optional
+  model: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  top_k: 10
+
+generation:
+  model: "deepseek-chat"
+  temperature: 0.0
+  max_tokens: 2048
+  max_context_chunks: 10
+
+guardrails:
+  unanswerable_detection: true
+  min_retrieval_score: 0.1
+
+performance:
+  expected_latency_ms: 3300
+  expected_tokens: 500
+
+# Query expansion templates
+templates:
+  pricing:
+    - "{query}"
+    - "How to price {query}"
+    - "Pricing formula for {query}"
+    - "Valuation of {query}"
+  
+  greeks:
+    - "{query}"
+    - "Greeks for {query}"
+    - "Delta and gamma of {query}"
+    - "Sensitivity analysis {query}"
+  
+  assumptions:
+    - "{query}"
+    - "Assumptions for {query}"
+    - "Requirements for {query}"
+    - "Conditions for {query}"
+  
+  methods:
+    - "{query}"
+    - "Methods for {query}"
+    - "Approaches to {query}"
+    - "Techniques for {query}"
+

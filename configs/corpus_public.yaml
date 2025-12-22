@@ -1,0 +1,332 @@
+build_config:
+  embedding_model: intfloat/e5-small-v2
+  max_pages: 900
+  target_domain: derivatives pricing + market risk
+created_at: '2025-12-18T21:11:51.070907'
+documents:
+- arxiv_id: null
+  authors: null
+  checksum_sha256: 9ae51e8f9bbfa99b95de9aa7d52969c742b7c2dece437fea856176f8bf5193c7
+  corpus_profile: public
+  description: 'Classic market risk methodology: VaR, volatility, correlations'
+  file_size_bytes: 1732229
+  id: riskmetrics_1996
+  ingested_at: null
+  license: Public domain / industry standard
+  page_count: 296
+  pdf_path: data/pdf/riskmetrics_1996.pdf
+  primary_category: null
+  retrieved_at: '2025-12-18T21:11:51.042481'
+  source_type: industry
+  source_url: https://www.msci.com/documents/10199/5915b101-4206-4ba0-aee2-3449d5c7e95a
+  title: RiskMetrics Technical Document (4th Edition)
+  year: null
+- arxiv_id: null
+  authors: null
+  checksum_sha256: 4b8050428e00a093b4befd5c53372931470b8ef31eb2eec03d7f6c4f232a7fd5
+  corpus_profile: public
+  description: 'Basel market risk standard: definitions, requirements, sensitivities'
+  file_size_bytes: 1345132
+  id: bcbs_frtb_2019
+  ingested_at: null
+  license: BIS public documents
+  page_count: 136
+  pdf_path: data/pdf/bcbs_frtb_2019.pdf
+  primary_category: null
+  retrieved_at: '2025-12-18T21:11:51.046053'
+  source_type: regulatory
+  source_url: https://www.bis.org/bcbs/publ/d457.pdf
+  title: BCBS - Minimum capital requirements for market risk (FRTB)
+  year: null
+- arxiv_id: 2408.15416v1
+  authors:
+  - Nicole Hao
+  - Echo Li
+  - Diep Luong-Le
+  checksum_sha256: cb05fe294ecd7b0bbf53eeb7ae487e417f96128293c405108062370efd85421b
+  corpus_profile: public
+  description: null
+  file_size_bytes: 2344702
+  id: arxiv_2408_15416v1
+  ingested_at: null
+  license: arXiv.org perpetual non-exclusive license
+  page_count: 10
+  pdf_path: data/pdf/arxiv_2408_15416v1.pdf
+  primary_category: q-fin.MF
+  retrieved_at: '2025-12-18T21:11:51.065610'
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2408.15416v1
+  title: Option Pricing with Stochastic Volatility, Equity Premium, and Interest Rates
+  year: 2024
+- arxiv_id: 2102.10213v1
+  authors:
+  - Ju Hong Kim
+  checksum_sha256: d23415b44aeea92037a1ece98fe5f80245cd6c671aa8f9a3b9ecf70133d1b380
+  corpus_profile: public
+  description: null
+  file_size_bytes: 158971
+  id: arxiv_2102_10213v1
+  ingested_at: null
+  license: arXiv.org perpetual non-exclusive license
+  page_count: 14
+  pdf_path: data/pdf/arxiv_2102_10213v1.pdf
+  primary_category: q-fin.MF
+  retrieved_at: '2025-12-18T21:11:51.058022'
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2102.10213v1
+  title: The relations of Choquet Integral and G-Expectation
+  year: 2021
+- arxiv_id: 2512.15071v1
+  authors:
+  - Hamza Virk
+  - Yihren Wu
+  - Majnu John
+  checksum_sha256: d60cc5f03bffc3abc63f759ddcb345e33662bd7ea91f28cbaa81c93342d37be3
+  corpus_profile: public
+  description: null
+  file_size_bytes: 372359
+  id: arxiv_2512_15071v1
+  ingested_at: null
+  license: arXiv.org perpetual non-exclusive license
+  page_count: 16
+  pdf_path: data/pdf/arxiv_2512_15071v1.pdf
+  primary_category: q-fin.MF
+  retrieved_at: '2025-12-18T21:11:51.057487'
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2512.15071v1
+  title: Arbitrage-Free Pricing with Diffusion-Dependent Jumps
+  year: 2025
+- arxiv_id: 1708.02563v3
+  authors:
+  - Ryan McCrickerd
+  - Mikko S. Pakkanen
+  checksum_sha256: 97c5e875eb43bf02648f8d7d3898164597ab60f79aa05605bd6e2bc8399c013f
+  corpus_profile: public
+  description: null
+  file_size_bytes: 1241717
+  id: arxiv_1708_02563v3
+  ingested_at: null
+  license: arXiv.org perpetual non-exclusive license
+  page_count: 16
+  pdf_path: data/pdf/arxiv_1708_02563v3.pdf
+  primary_category: q-fin.CP
+  retrieved_at: '2025-12-18T21:11:51.069645'
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/1708.02563v3
+  title: Turbocharging Monte Carlo pricing for the rough Bergomi model
+  year: 2017
+- arxiv_id: 2503.01040v1
+  authors:
+  - Paweł Stȩpniak
+  - Zbigniew Palmowski
+  checksum_sha256: c2538c2e7544170fe503e2706d072bf329ec0dc19583fd029190c491993f25a7
+  corpus_profile: public
+  description: null
+  file_size_bytes: 395519
+  id: arxiv_2503_01040v1
+  ingested_at: null
+  license: arXiv.org perpetual non-exclusive license
+  page_count: 16
+  pdf_path: data/pdf/arxiv_2503_01040v1.pdf
+  primary_category: q-fin.MF
+  retrieved_at: '2025-12-18T21:11:51.070872'
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2503.01040v1
+  title: Pricing time-capped American options using Least Squares Monte Carlo method
+  year: 2025
+- arxiv_id: 1406.2133v1
+  authors:
+  - Timothy G. Ling
+  - Pavel V. Shevchenko
+  checksum_sha256: 59334df60059ff82527cc56f818df17ae3ad8726c33b97efb233cf17418a6a89
+  corpus_profile: public
+  description: null
+  file_size_bytes: 1196190
+  id: arxiv_1406_2133v1
+  ingested_at: null
+  license: arXiv.org perpetual non-exclusive license
+  page_count: 19
+  pdf_path: data/pdf/arxiv_1406_2133v1.pdf
+  primary_category: q-fin.PR
+  retrieved_at: '2025-12-18T21:11:51.059417'
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/1406.2133v1
+  title: Historical Backtesting of Local Volatility Model using AUD/USD Vanilla Options
+  year: 2014
+- arxiv_id: 2510.27277v1
+  authors:
+  - Francesco Romaggi
+  checksum_sha256: 317505a70a08582474bb2855a3996febf6a0bdcb7fde90f294f609daef6e7163
+  corpus_profile: public
+  description: null
+  file_size_bytes: 708803
+  id: arxiv_2510_27277v1
+  ingested_at: null
+  license: arXiv.org perpetual non-exclusive license
+  page_count: 22
+  pdf_path: data/pdf/arxiv_2510_27277v1.pdf
+  primary_category: q-fin.PR
+  retrieved_at: '2025-12-18T21:11:51.063813'
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2510.27277v1
+  title: Black-Scholes Model, comparison between Analytical Solution and Numerical
+    Analysis
+  year: 2025
+- arxiv_id: 1608.03352v1
+  authors:
+  - Deborshee Sen
+  - Ajay Jasra
+  - Yan Zhou
+  checksum_sha256: e5f7f068bf9fc01690e157a0788547b5d0c2d385a85f859bf989f2d45505187f
+  corpus_profile: public
+  description: null
+  file_size_bytes: 2893380
+  id: arxiv_1608_03352v1
+  ingested_at: null
+  license: arXiv.org perpetual non-exclusive license
+  page_count: 22
+  pdf_path: data/pdf/arxiv_1608_03352v1.pdf
+  primary_category: stat.CO
+  retrieved_at: '2025-12-18T21:11:51.068453'
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/1608.03352v1
+  title: Some Contributions to Sequential Monte Carlo Methods for Option Pricing
+  year: 2016
+- arxiv_id: 1608.04621v1
+  authors:
+  - Adrien Genin
+  - Peter Tankov
+  checksum_sha256: 99ef9b8999bb44fcba68e9a218af9aff327bb8b8b6fdfaaae63ebc45c5f02ccb
+  corpus_profile: public
+  description: null
+  file_size_bytes: 457985
+  id: arxiv_1608_04621v1
+  ingested_at: null
+  license: arXiv.org perpetual non-exclusive license
+  page_count: 23
+  pdf_path: data/pdf/arxiv_1608_04621v1.pdf
+  primary_category: q-fin.RM
+  retrieved_at: '2025-12-18T21:11:51.066304'
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/1608.04621v1
+  title: Optimal importance sampling for Lévy Processes
+  year: 2016
+- arxiv_id: 2405.11329v2
+  authors:
+  - Qiang Liu
+  - Shuxin Guo
+  checksum_sha256: 655b343c7ecf88ea78c2930ce61c04ecc42cd1e814c1f7201f033d350e0b96ec
+  corpus_profile: public
+  description: null
+  file_size_bytes: 816689
+  id: arxiv_2405_11329v2
+  ingested_at: null
+  license: arXiv.org perpetual non-exclusive license
+  page_count: 24
+  pdf_path: data/pdf/arxiv_2405_11329v2.pdf
+  primary_category: q-fin.PR
+  retrieved_at: '2025-12-18T21:11:51.062145'
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2405.11329v2
+  title: Risk-neutral valuation of options under arithmetic Brownian motions
+  year: 2024
+- arxiv_id: 2002.06227v2
+  authors:
+  - Antonis Papapantoleon
+  - Paulo Yanez Sarmiento
+  checksum_sha256: fc1854bdfe307db5c601eac1e9195aa82c6ba878ed05982770d3c1d4e0c97e7b
+  corpus_profile: public
+  description: null
+  file_size_bytes: 3985960
+  id: arxiv_2002_06227v2
+  ingested_at: null
+  license: arXiv.org perpetual non-exclusive license
+  page_count: 25
+  pdf_path: data/pdf/arxiv_2002_06227v2.pdf
+  primary_category: q-fin.PR
+  retrieved_at: '2025-12-18T21:11:51.056026'
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2002.06227v2
+  title: Detection of arbitrage opportunities in multi-asset derivatives markets
+  year: 2020
+- arxiv_id: 2402.17919v2
+  authors:
+  - Young Shin Kim
+  - Hyun-Gyoon Kim
+  checksum_sha256: f4f58004f8f29c699cf3fbaa12ca757752c16e3379da789bd2e681abcd51d571
+  corpus_profile: public
+  description: null
+  file_size_bytes: 326359
+  id: arxiv_2402_17919v2
+  ingested_at: null
+  license: arXiv.org perpetual non-exclusive license
+  page_count: 25
+  pdf_path: data/pdf/arxiv_2402_17919v2.pdf
+  primary_category: q-fin.MF
+  retrieved_at: '2025-12-18T21:11:51.056919'
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2402.17919v2
+  title: Quanto Option Pricing on a Multivariate Levy Process Model with a Generative
+    Artificial Intelligence
+  year: 2024
+- arxiv_id: 1406.0394v1
+  authors:
+  - Archil Gulisashvili
+  - Peter Tankov
+  checksum_sha256: ab28e98c51ed632def56ba54735037c628922f827f5c518076cb597f27b89983
+  corpus_profile: public
+  description: null
+  file_size_bytes: 322407
+  id: arxiv_1406_0394v1
+  ingested_at: null
+  license: arXiv.org perpetual non-exclusive license
+  page_count: 25
+  pdf_path: data/pdf/arxiv_1406_0394v1.pdf
+  primary_category: q-fin.PR
+  retrieved_at: '2025-12-18T21:11:51.060143'
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/1406.0394v1
+  title: Implied volatility of basket options at extreme strikes
+  year: 2014
+- arxiv_id: 2308.04130v1
+  authors:
+  - Claude Martini
+  - Arianna Mingone
+  checksum_sha256: 3508a3569a9d66d320912a0c8f6b73912a5e47a5de9d7769be6bc8c4e6010be5
+  corpus_profile: public
+  description: null
+  file_size_bytes: 827927
+  id: arxiv_2308_04130v1
+  ingested_at: null
+  license: arXiv.org perpetual non-exclusive license
+  page_count: 31
+  pdf_path: data/pdf/arxiv_2308_04130v1.pdf
+  primary_category: q-fin.MF
+  retrieved_at: '2025-12-18T21:11:51.061386'
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/2308.04130v1
+  title: 'Options are also options on options: how to smile with Black-Scholes'
+  year: 2023
+- arxiv_id: 1308.2688v1
+  authors:
+  - Alet Roux
+  - Tomasz Zastawniak
+  checksum_sha256: 419fd63a2c1cbdb7fa6f1219e1fea9427fdf8957873d000033f1766a0160bd09
+  corpus_profile: public
+  description: null
+  file_size_bytes: 503832
+  id: arxiv_1308_2688v1
+  ingested_at: null
+  license: arXiv.org perpetual non-exclusive license
+  page_count: 32
+  pdf_path: data/pdf/arxiv_1308_2688v1.pdf
+  primary_category: q-fin.PR
+  retrieved_at: '2025-12-18T21:11:51.070224'
+  source_type: arxiv
+  source_url: https://arxiv.org/abs/1308.2688v1
+  title: American options with gradual exercise under proportional transaction costs
+  year: 2013
+notes: 'Public corpus: 17 docs, 752 pages'
+total_documents: 17
+total_pages: 752
+version: '1.0'

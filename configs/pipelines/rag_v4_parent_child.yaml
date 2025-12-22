@@ -1,0 +1,39 @@
+# RAGv4: Parent-Child retrieval pipeline configuration
+
+pipeline:
+  name: RAGv4_ParentChild
+  version: "4.0"
+  description: "Parent-child retrieval for better context"
+
+retrieval:
+  type: parent_child
+  child_retriever: dense  # dense | hybrid
+  child_top_k: 15
+  parent_strategy: page  # page | section
+  parent_top_k: 5
+  
+  # Child retriever config
+  dense_model: "intfloat/e5-small-v2"
+  device: cpu
+
+generation:
+  model: "deepseek-chat"
+  temperature: 0.0
+  max_tokens: 2048
+  max_context_chunks: 5  # fewer because parents are larger
+
+guardrails:
+  unanswerable_detection: true
+  min_retrieval_score: 0.1
+
+performance:
+  expected_latency_ms: 3200
+  expected_tokens: 600  # larger context
+
+notes: |
+  Parent-child strategy groups small "child" chunks into larger "parent" contexts:
+  - page: Groups chunks by page number (better for PDF documents)
+  - section: Groups chunks by section path (better for structured documents)
+  
+  This provides more context for generation while maintaining precision in retrieval.
+

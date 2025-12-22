@@ -1,0 +1,29 @@
+# Core dependencies for QA Assistant project
+# LLM & Embeddings
+openai>=1.0.0  # for DeepSeek API (OpenAI-compatible)
+sentence-transformers>=2.2.0  # for local embeddings (e5-small-v2)
+
+# PDF processing & parsing
+PyMuPDF>=1.23.0  # fitz for PDF parsing
+pdfplumber>=0.10.0  # alternative PDF parser
+
+# Retrieval & indexing
+faiss-cpu>=1.7.4  # vector index
+rank-bm25>=0.2.2  # BM25 retrieval
+
+# Data & storage
+pydantic>=2.0.0  # data models
+pyyaml>=6.0  # config files
+duckdb>=0.9.0  # metadata storage
+
+# HTTP & downloads
+requests>=2.31.0  # PDF downloads
+arxiv>=2.0.0  # arXiv API client
+tqdm>=4.65.0  # progress bars
+
+# Telegram bot
+python-telegram-bot>=20.0  # telegram interface
+
+# Utilities
+python-dotenv>=1.0.0  # env management
+

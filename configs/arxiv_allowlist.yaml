@@ -1,0 +1,304 @@
+created_at: '2025-12-18T21:11:51.032684'
+papers:
+- arxiv_id: 2002.06227v2
+  authors:
+  - Antonis Papapantoleon
+  - Paulo Yanez Sarmiento
+  categories:
+  - q-fin.PR
+  - math.PR
+  group: risk_neutral_martingale
+  pdf_url: https://arxiv.org/pdf/2002.06227v2
+  primary_category: q-fin.PR
+  published: '2020-02-14T19:29:37+00:00'
+  score: 4
+  summary: We are interested in the existence of equivalent martingale measures and
+    the detection of arbitrage opportunities in markets where several multi-asset
+    derivatives are traded simultaneously. More specifically, we consider a financial
+    market with multiple traded assets whose marginal risk-neutral distributions are
+    known, and assume that several derivatives written on these assets are traded
+    simultaneously. In this setting, there is a bijection between the existence of
+    an equivalent martingale meas
+  title: Detection of arbitrage opportunities in multi-asset derivatives markets
+- arxiv_id: 2402.17919v2
+  authors:
+  - Young Shin Kim
+  - Hyun-Gyoon Kim
+  categories:
+  - q-fin.MF
+  group: risk_neutral_martingale
+  pdf_url: https://arxiv.org/pdf/2402.17919v2
+  primary_category: q-fin.MF
+  published: '2024-02-27T22:14:18+00:00'
+  score: 4
+  summary: In this study, we discuss a machine learning technique to price exotic
+    options with two underlying assets based on a non-Gaussian Levy process model.
+    We introduce a new multivariate Levy process model named the generalized normal
+    tempered stable (gNTS) process, which is defined by time-changed multivariate
+    Brownian motion. Since the gNTS process does not provide a simple analytic formula
+    for the probability density function (PDF), we use the conditional real-valued
+    non-volume preserving (CRealNV
+  title: Quanto Option Pricing on a Multivariate Levy Process Model with a Generative
+    Artificial Intelligence
+- arxiv_id: 2512.15071v1
+  authors:
+  - Hamza Virk
+  - Yihren Wu
+  - Majnu John
+  categories:
+  - q-fin.MF
+  group: risk_neutral_martingale
+  pdf_url: https://arxiv.org/pdf/2512.15071v1
+  primary_category: q-fin.MF
+  published: '2025-12-17T04:25:09+00:00'
+  score: 3
+  summary: Standard jump-diffusion models assume independence between jumps and diffusion
+    components. We develop a multi-type jump-diffusion model where jump occurrence
+    and magnitude depend on contemporaneous diffusion movements. Unlike previous one-sided
+    models that create arbitrage opportunities, our framework includes upward and
+    downward jumps triggered by both large upward and large downward diffusion increments.
+    We derive the explicit no-arbitrage condition linking the physical drift to model
+    paramete
+  title: Arbitrage-Free Pricing with Diffusion-Dependent Jumps
+- arxiv_id: 2102.10213v1
+  authors:
+  - Ju Hong Kim
+  categories:
+  - q-fin.MF
+  group: risk_neutral_martingale
+  pdf_url: https://arxiv.org/pdf/2102.10213v1
+  primary_category: q-fin.MF
+  published: '2021-02-20T00:27:48+00:00'
+  score: 3
+  summary: In incomplete financial markets, there exists a set of equivalent martingale
+    measures (or risk-neutral probabilities) in an arbitrage-free pricing of the contingent
+    claims. Minimax expectation is closely related to the $g$-expectation which is
+    the solution of a certain stochastic differential equation. We show that Choquet
+    expectation and minimax expectation are equal in pricing European type options,
+    whose payoff is a monotone function of the terminal stock price $S_T$.
+  title: The relations of Choquet Integral and G-Expectation
+- arxiv_id: 1406.2133v1
+  authors:
+  - Timothy G. Ling
+  - Pavel V. Shevchenko
+  categories:
+  - q-fin.PR
+  group: black_scholes_greeks
+  pdf_url: https://arxiv.org/pdf/1406.2133v1
+  primary_category: q-fin.PR
+  published: '2014-06-09T10:51:01+00:00'
+  score: 3
+  summary: The Local Volatility model is a well-known extension of the Black-Scholes
+    constant volatility model whereby the volatility is dependent on both time and
+    the underlying asset. This model can be calibrated to provide a perfect fit to
+    a wide range of implied volatility surfaces. The model is easy to calibrate and
+    still very popular in FX option trading. In this paper we address a question of
+    validation of the Local Volatility model. Different stochastic models for the
+    underlying can be calibrated t
+  title: Historical Backtesting of Local Volatility Model using AUD/USD Vanilla Options
+- arxiv_id: 1406.0394v1
+  authors:
+  - Archil Gulisashvili
+  - Peter Tankov
+  categories:
+  - q-fin.PR
+  group: black_scholes_greeks
+  pdf_url: https://arxiv.org/pdf/1406.0394v1
+  primary_category: q-fin.PR
+  published: '2014-06-02T14:48:22+00:00'
+  score: 2
+  summary: In the paper, we characterize the asymptotic behavior of the implied volatility
+    of a basket call option at large and small strikes in a variety of settings with
+    increasing generality. First, we obtain an asymptotic formula with an error bound
+    for the left wing of the implied volatility, under the assumption that the dynamics
+    of asset prices are described by the multidimensional Black-Scholes model. Next,
+    we find the leading term of asymptotics of the implied volatility in the case
+    where the asse
+  title: Implied volatility of basket options at extreme strikes
+- arxiv_id: 2308.04130v1
+  authors:
+  - Claude Martini
+  - Arianna Mingone
+  categories:
+  - q-fin.MF
+  group: black_scholes_greeks
+  pdf_url: https://arxiv.org/pdf/2308.04130v1
+  primary_category: q-fin.MF
+  published: '2023-08-08T08:36:53+00:00'
+  score: 2
+  summary: We observe that a European Call option with strike $L > K$ can be seen
+    as a Call option with strike $L-K$ on a Call option with strike $K$. Under no
+    arbitrage assumptions, this yields immediately that the prices of the two contracts
+    are the same, in full generality. We study in detail the relative pricing function
+    which gives the price of the Call on Call option as a function of its underlying
+    Call option, and provide quasi-closed formula for those new pricing functions
+    in the Carr-Pelts-Tehranc
+  title: 'Options are also options on options: how to smile with Black-Scholes'
+- arxiv_id: 2405.11329v2
+  authors:
+  - Qiang Liu
+  - Shuxin Guo
+  categories:
+  - q-fin.PR
+  - q-fin.MF
+  - q-fin.RM
+  group: pde_finite_difference
+  pdf_url: https://arxiv.org/pdf/2405.11329v2
+  primary_category: q-fin.PR
+  published: '2024-05-18T16:17:05+00:00'
+  score: 3
+  summary: On April 22, 2020, the CME Group switched to Bachelier pricing for a group
+    of oil futures options. The Bachelier model, or more generally the arithmetic
+    Brownian motion (ABM), is not so widely used in finance, though. This paper provides
+    the first comprehensive survey of options pricing under ABM. Using the risk-neutral
+    valuation, we derive formulas for European options for three underlying types,
+    namely an underlying that does not pay dividends, an underlying that pays a continuous
+    dividend yie
+  title: Risk-neutral valuation of options under arithmetic Brownian motions
+- arxiv_id: 2510.27277v1
+  authors:
+  - Francesco Romaggi
+  categories:
+  - q-fin.PR
+  - cs.CE
+  - q-fin.CP
+  - q-fin.RM
+  group: pde_finite_difference
+  pdf_url: https://arxiv.org/pdf/2510.27277v1
+  primary_category: q-fin.PR
+  published: '2025-10-31T08:38:07+00:00'
+  score: 3
+  summary: The main purpose of this article is to give a general overview and understanding
+    of the first widely used option-pricing model, the Black-Scholes model. The history
+    and context are presented, with the usefulness and implications in the economics
+    world. A brief review of fundamental calculus concepts is introduced to derive
+    and solve the model. The equation is then resolved using both an analytical (variable
+    separation) and a numerical method (finite differences). Conclusions are drawn
+    in order t
+  title: Black-Scholes Model, comparison between Analytical Solution and Numerical
+    Analysis
+- arxiv_id: 2408.15416v1
+  authors:
+  - Nicole Hao
+  - Echo Li
+  - Diep Luong-Le
+  categories:
+  - q-fin.MF
+  - math.AP
+  - q-fin.CP
+  group: pde_finite_difference
+  pdf_url: https://arxiv.org/pdf/2408.15416v1
+  primary_category: q-fin.MF
+  published: '2024-08-27T21:45:10+00:00'
+  score: 2
+  summary: This paper presents a new model for options pricing. The Black-Scholes-Merton
+    (BSM) model plays an important role in financial options pricing. However, the
+    BSM model assumes that the risk-free interest rate, volatility, and equity premium
+    are constant, which is unrealistic in the real market. To address this, our paper
+    considers the time-varying characteristics of those parameters. Our model integrates
+    elements of the BSM model, the Heston (1993) model for stochastic variance, the
+    Vasicek model
+  title: Option Pricing with Stochastic Volatility, Equity Premium, and Interest Rates
+- arxiv_id: 1608.04621v1
+  authors:
+  - Adrien Genin
+  - Peter Tankov
+  categories:
+  - q-fin.RM
+  - math.PR
+  group: monte_carlo
+  pdf_url: https://arxiv.org/pdf/1608.04621v1
+  primary_category: q-fin.RM
+  published: '2016-08-16T14:41:02+00:00'
+  score: 3
+  summary: We develop generic and efficient importance sampling estimators for Monte
+    Carlo evaluation of prices of single- and multi-asset European and path-dependent
+    options in asset price models driven by Lévy processes, extending earlier works
+    which focused on the Black-Scholes and continuous stochastic volatility models.
+    Using recent results from the theory of large deviations on the path space for
+    processes with independent increments, we compute an explicit asymptotic approximation
+    for the variance o
+  title: Optimal importance sampling for Lévy Processes
+- arxiv_id: 1608.03352v1
+  authors:
+  - Deborshee Sen
+  - Ajay Jasra
+  - Yan Zhou
+  categories:
+  - stat.CO
+  - q-fin.CP
+  - q-fin.PR
+  group: monte_carlo
+  pdf_url: https://arxiv.org/pdf/1608.03352v1
+  primary_category: stat.CO
+  published: '2016-08-11T02:54:31+00:00'
+  score: 2
+  summary: Pricing options is an important problem in financial engineering. In many
+    scenarios of practical interest, financial option prices associated to an underlying
+    asset reduces to computing an expectation w.r.t.~a diffusion process. In general,
+    these expectations cannot be calculated analytically, and one way to approximate
+    these quantities is via the Monte Carlo method; Monte Carlo methods have been
+    used to price options since at least the 1970's. It has been seen in Del Moral,
+    P. \& Shevchenko, P.
+  title: Some Contributions to Sequential Monte Carlo Methods for Option Pricing
+- arxiv_id: 1708.02563v3
+  authors:
+  - Ryan McCrickerd
+  - Mikko S. Pakkanen
+  categories:
+  - q-fin.CP
+  - q-fin.PR
+  group: monte_carlo
+  pdf_url: https://arxiv.org/pdf/1708.02563v3
+  primary_category: q-fin.CP
+  published: '2017-08-08T17:13:12+00:00'
+  score: 2
+  summary: The rough Bergomi model, introduced by Bayer, Friz and Gatheral [Quant.
+    Finance 16(6), 887-904, 2016], is one of the recent rough volatility models that
+    are consistent with the stylised fact of implied volatility surfaces being essentially
+    time-invariant, and are able to capture the term structure of skew observed in
+    equity markets. In the absence of analytical European option pricing methods for
+    the model, we focus on reducing the runtime-adjusted variance of Monte Carlo implied
+    volatilities, t
+  title: Turbocharging Monte Carlo pricing for the rough Bergomi model
+- arxiv_id: 1308.2688v1
+  authors:
+  - Alet Roux
+  - Tomasz Zastawniak
+  categories:
+  - q-fin.PR
+  - math.PR
+  group: american_options
+  pdf_url: https://arxiv.org/pdf/1308.2688v1
+  primary_category: q-fin.PR
+  published: '2013-08-12T20:09:37+00:00'
+  score: 3
+  summary: American options in a multi-asset market model with proportional transaction
+    costs are studied in the case when the holder of an option is able to exercise
+    it gradually at a so-called mixed (randomised) stopping time. The introduction
+    of gradual exercise leads to tighter bounds on the option price when compared
+    to the case studied in the existing literature, where the standard assumption
+    is that the option can only be exercised instantly at an ordinary stopping time.
+    Algorithmic constructions fo
+  title: American options with gradual exercise under proportional transaction costs
+- arxiv_id: 2503.01040v1
+  authors:
+  - Paweł Stȩpniak
+  - Zbigniew Palmowski
+  categories:
+  - q-fin.MF
+  group: american_options
+  pdf_url: https://arxiv.org/pdf/2503.01040v1
+  primary_category: q-fin.MF
+  published: '2025-03-02T22:07:54+00:00'
+  score: 2
+  summary: In this paper, we adopt the least squares Monte Carlo (LSMC) method to
+    price time-capped American options. The aforementioned cap can be an independent
+    random variable or dependent on asset price at random time. We allow various time
+    caps. In particular, we give an algorithm for pricing the American options capped
+    by the first drawdown epoch. We focus on the geometric Lévy market. We prove that
+    our estimator converges to the true price as one takes the discretisation step
+    tending to zero and the
+  title: Pricing time-capped American options using Least Squares Monte Carlo method
+total_count: 15
+version: '1.0'
