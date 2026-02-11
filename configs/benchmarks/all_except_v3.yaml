@@ -1,12 +1,10 @@
-# Full evaluation configuration
-#
-# Comprehensive benchmark on all datasets with LLM judge
+# Benchmark config: run all RAG pipelines except v3 (multiquery)
 
 version: "1.0"
 
 corpus_profile: "public"
+index_strategy: "fixed"
 
-# All datasets
 datasets:
   - ds1
   - ds2
@@ -14,14 +12,9 @@ datasets:
   - ds4
   - ds5
 
-# All pipelines
 pipelines:
   - rag_v1_dense
   - rag_v2_hybrid
-  - rag_v3_multiquery
-  # Baselines (no RAG)
-  # - baseline_llm_chat
-  # - baseline_llm_reasoner
   - rag_v4_parent_child
   - rag_v5_evidence
 
@@ -32,16 +25,18 @@ pipeline_params:
   max_tokens: 1500
 
 evaluation:
-  compute_llm_judge: true
+  # NOTE: scripts/run_benchmark.py currently creates BenchmarkRunner(llm_client=None),
+  # so judge metrics will be skipped even if enabled. Keep it false for now.
+  compute_llm_judge: false
   judge_batch_size: 5
-  judge_sample_rate: 1.0  # Evaluate all examples
+  judge_sample_rate: 1.0
 
 cache:
   enable_prediction_cache: true
   enable_embedding_cache: true
 
 output:
-  run_name: "full_eval"
+  run_name: "all_except_v3"
   output_dir: "data/runs"
   save_predictions: true
   generate_reports: true
@@ -54,4 +49,5 @@ token_budget:
 reproducibility:
   seed: 42
   deterministic: true
+
 

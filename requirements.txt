@@ -21,9 +21,16 @@ requests>=2.31.0  # PDF downloads
 arxiv>=2.0.0  # arXiv API client
 tqdm>=4.65.0  # progress bars
 
+# Reliability
+tenacity>=8.2.0  # retries/backoff for API calls
+
 # Telegram bot
 python-telegram-bot>=20.0  # telegram interface
 
 # Utilities
 python-dotenv>=1.0.0  # env management
+
+# Testing
+pytest>=7.4.0  # test framework (optional, unittest is built-in)
+coverage>=7.0.0  # code coverage (optional)
 

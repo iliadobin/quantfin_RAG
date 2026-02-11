@@ -1,0 +1,134 @@
+{
+  "version": "1.0",
+  "name": "MultiHopDerivatives",
+  "description": "Production DS4 multi-hop for public corpus (real citations)",
+  "examples": [
+    {
+      "id": "ds4_pub_001",
+      "question": "Compare Value-at-Risk (VaR) and Expected Shortfall (ES): what does VaR represent in RiskMetrics, and what confidence level is specified for ES in the BCBS market risk standard?",
+      "gold_answer": "RiskMetrics describes VaR as a measure of the maximum potential change in value of a portfolio with a given probability over a preset horizon. The BCBS market risk standard specifies that ES must be computed using a 97.5th percentile, one-tailed confidence level.",
+      "gold_citations": [
+        {
+          "doc_id": "riskmetrics_1996",
+          "page_span": {
+            "start_page": 18,
+            "end_page": 18,
+            "start_char": 0,
+            "end_char": 1801
+          },
+          "quote": "th Edition Reading this chapter requires a basic understanding of statistics. For assistance, readers can refer to the glossary at the end of this document. 1.1 An introduction to Value-at-Risk and RiskMetrics Value-at-Risk is a measure of the maximum potential change in value of a portfolio of financial instruments with a given probability over a pre-set horizon. VaR an",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "riskmetrics_1996_fixed_2d2dbf15b88ec01c"
+        },
+        {
+          "doc_id": "bcbs_frtb_2019",
+          "page_span": {
+            "start_page": 95,
+            "end_page": 95,
+            "start_char": 0,
+            "end_char": 1805
+          },
+          "quote": "risk capital requirements. ES must also be computed on a daily basis for each trading desk that uses the internal models approach (IMA). 33.3 In calculating ES, a bank must use a 97.5th percentile, one-tailed confidence level. 33.4 In calculating ES, the liquidity horizons described in [MAR33.12] must be reflected by scaling an ES calculated on a base horizon. The ES for a",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "bcbs_frtb_2019_fixed_15989d015bc6e1c0"
+        }
+      ],
+      "hops": [
+        {
+          "hop_number": 1,
+          "sub_question": "How is Value-at-Risk (VaR) defined in RiskMetrics?",
+          "required_doc_ids": [
+            "riskmetrics_1996"
+          ],
+          "required_concepts": [
+            "VaR",
+            "probability",
+            "horizon"
+          ]
+        },
+        {
+          "hop_number": 2,
+          "sub_question": "What confidence level is required for Expected Shortfall (ES) in BCBS FRTB?",
+          "required_doc_ids": [
+            "bcbs_frtb_2019"
+          ],
+          "required_concepts": [
+            "ES",
+            "97.5th percentile",
+            "one-tailed"
+          ]
+        }
+      ],
+      "reasoning_type": "comparative",
+      "min_required_sources": 2,
+      "difficulty": "hard"
+    },
+    {
+      "id": "ds4_pub_002",
+      "question": "Summarize two numerical approaches mentioned across the corpus: what are RiskMetrics' three major steps of Monte Carlo simulation, and which numerical method is used to approximate option pricing PDE solutions in Hao et al. (2024)?",
+      "gold_answer": "RiskMetrics describes Monte Carlo simulation as involving scenario generation, portfolio valuation under those scenarios, and summarizing the results (e.g., as a distribution or risk measure). Hao et al. (2024) describe approximating option pricing PDE solutions numerically using finite difference methods.",
+      "gold_citations": [
+        {
+          "doc_id": "riskmetrics_1996",
+          "page_span": {
+            "start_page": 26,
+            "end_page": 26,
+            "start_char": 0,
+            "end_char": 1802
+          },
+          "quote": "on precept where all instruments are marked to market under a large number of scenarios driven by the volatility and correlation estimates. The Monte Carlo methodology consists of three major steps: 1. Scenario generation —Using the volatility and correlation estimates for the underlying assets in our portfolio, we produce a large number of future price scenarios in accordan",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "riskmetrics_1996_fixed_a6f81a03a4c86575"
+        },
+        {
+          "doc_id": "arxiv_2408_15416v1",
+          "page_span": {
+            "start_page": 1,
+            "end_page": 1,
+            "start_char": 0,
+            "end_char": 1812
+          },
+          "quote": "abolic PDE and extend our model to encompass fixed-strike Asian options, yielding a new PDE. In the absence of closed-form solutions for any options from our new model, we utilize finite difference methods to approximate prices for European call and up-and-out barrier options, and outline the numerical implementation for fixed-strike Asian call options. 1. Introduction In this paper",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "arxiv_2408_15416v1_fixed_36f9740293937eab"
+        }
+      ],
+      "hops": [
+        {
+          "hop_number": 1,
+          "sub_question": "What are the major steps of Monte Carlo simulation in RiskMetrics?",
+          "required_doc_ids": [
+            "riskmetrics_1996"
+          ],
+          "required_concepts": [
+            "Monte Carlo",
+            "scenario generation",
+            "revaluation"
+          ]
+        },
+        {
+          "hop_number": 2,
+          "sub_question": "What numerical method is used for PDE approximation in Hao et al. (2024)?",
+          "required_doc_ids": [
+            "arxiv_2408_15416v1"
+          ],
+          "required_concepts": [
+            "PDE",
+            "finite difference"
+          ]
+        }
+      ],
+      "reasoning_type": "comparative",
+      "min_required_sources": 2,
+      "difficulty": "hard"
+    }
+  ],
+  "total_examples": 2,
+  "reasoning_types_distribution": {
+    "comparative": 2
+  }
+}

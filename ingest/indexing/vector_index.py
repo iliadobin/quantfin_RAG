@@ -8,7 +8,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import List
 
-import faiss
 import numpy as np
 
 
@@ -18,10 +17,15 @@ class FaissArtifacts:
     chunk_ids_path: Path
 
 
-def build_faiss_ip(embeddings: np.ndarray) -> faiss.Index:
+def build_faiss_ip(embeddings: np.ndarray):
     """
     Build IndexFlatIP for cosine similarity (requires normalized embeddings).
     """
+    # NOTE: On some macOS/Python builds, importing FAISS before torch/tokenizers
+    # can crash the process. This module is used alongside embedding code, so we
+    # keep FAISS as a runtime import.
+    import faiss  # noqa: WPS433 (runtime import is intentional)
+
     if embeddings.ndim != 2:
         raise ValueError("embeddings must be 2D [N, D]")
     n, d = embeddings.shape
@@ -34,9 +38,11 @@ def build_faiss_ip(embeddings: np.ndarray) -> faiss.Index:
 def save_faiss(
     out_dir: str | Path,
     *,
-    index: faiss.Index,
+    index,
     chunk_ids: List[str],
 ) -> FaissArtifacts:
+    import faiss  # noqa: WPS433 (runtime import is intentional)
+
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
 

@@ -69,10 +69,21 @@ python scripts/build_indices.py
 
 ### 5. Запуск Telegram бота
 
+**Настройка:**
+
+1. Получите токен у @BotFather в Telegram
+2. Добавьте в `.env`:
+   ```
+   TELEGRAM_BOT_TOKEN=your_token_here
+   ```
+
+**Запуск:**
+
 ```bash
-# TODO: будет реализовано
-python apps/telegram_bot/bot.py
+python scripts/run_telegram_bot.py
 ```
+
+Подробная инструкция: [TELEGRAM_BOT_SETUP.md](TELEGRAM_BOT_SETUP.md)
 
 ## Структура проекта
 
@@ -89,10 +100,10 @@ qa-assistant/
 │       └── pdf_downloader.py
 ├── knowledge/            # Модели данных
 │   └── models.py
-├── rag/                  # RAG пайплайны (TODO)
-├── benchmarks/           # Датасеты и метрики (TODO)
-├── llm/                  # DeepSeek клиент (TODO)
-├── apps/telegram_bot/    # Telegram UI (TODO)
+├── rag/                  # RAG пайплайны (v1-v5)
+├── benchmarks/           # Датасеты и метрики
+├── llm/                  # DeepSeek клиент
+├── apps/telegram_bot/    # Telegram UI (MVP ready)
 ├── scripts/              # CLI утилиты
 │   └── collect_corpus.py
 ├── data/                 # Данные (не в git)
@@ -158,19 +169,29 @@ qa-assistant/
   - Отчеты: JSON, Markdown, HTML, CSV
   - Example datasets generated and validated
 
+- **Epic F**: Telegram bot MVP (✅ COMPLETE)
+  - Interactive chat interface
+  - Pipeline selection (v1-v5)
+  - LLM model selection
+  - Citations display with page references
+  - Debug mode with retrieval trace
+  - User state management
+  - Inline keyboards for settings
+
 ### 🚧 В разработке
 
 - **Epic E**: Baselines (LLM-only)
-- **Epic F**: Telegram bot MVP
 - **Epic G**: Tests и производительность
 
 ### 📚 Документация
 
 - [QUICKSTART.md](QUICKSTART.md) - быстрый старт
+- [TELEGRAM_BOT_SETUP.md](TELEGRAM_BOT_SETUP.md) - настройка Telegram бота
 - [ARCHITECTURE.md](ARCHITECTURE.md) - архитектура
 - [RAG_IMPLEMENTATION_SUMMARY.md](RAG_IMPLEMENTATION_SUMMARY.md) - RAG детали
 - [BENCHMARK_IMPLEMENTATION_SUMMARY.md](BENCHMARK_IMPLEMENTATION_SUMMARY.md) - Benchmark детали
 - [EPIC_D_COMPLETION_SUMMARY.md](EPIC_D_COMPLETION_SUMMARY.md) - Epic D отчет
+- [apps/telegram_bot/README.md](apps/telegram_bot/README.md) - Telegram bot документация
 - [benchmarks/README.md](benchmarks/README.md) - гайд по benchmark
 
 ## Быстрый тест бенчмарка

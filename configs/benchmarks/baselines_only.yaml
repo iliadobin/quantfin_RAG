@@ -1,0 +1,42 @@
+# Baselines-only evaluation (no retrieval / no corpus dependency)
+#
+# Useful for comparing "LLM alone" against RAG pipelines.
+
+version: "1.0"
+
+corpus_profile: "public"
+
+datasets:
+  - ds1
+  - ds3
+
+pipelines:
+  - baseline_llm_chat
+  - baseline_llm_reasoner
+
+pipeline_params:
+  temperature: 0.0
+  max_tokens: 800
+
+evaluation:
+  compute_llm_judge: false
+
+cache:
+  enable_prediction_cache: true
+  enable_embedding_cache: true
+
+output:
+  run_name: "baselines_only"
+  output_dir: "data/runs"
+  save_predictions: true
+  generate_reports: true
+
+token_budget:
+  max_total_tokens: 200000
+  enable_monitoring: true
+
+reproducibility:
+  seed: 42
+  deterministic: true
+
+

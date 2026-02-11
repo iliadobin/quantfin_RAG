@@ -28,42 +28,159 @@ def load_config(config_path: Path) -> dict:
     return config
 
 
-def load_pipelines(pipeline_names: list):
-    """Load pipeline instances by name."""
-    # Import pipeline classes
+def load_pipelines(
+    pipeline_names: list,
+    corpus_profile: str = "public",
+    index_strategy: str = "fixed",
+):
+    """
+    Load pipeline instances by name.
+
+    This function wires minimal dependencies for RAG pipelines based on the
+    locally built indices (see `python scripts/build_indices.py`).
+    """
+    from llm.deepseek_client import DeepSeekClient
+    from rag.retrievers import DenseRetriever, BM25Retriever, HybridRetriever, MultiQueryRetriever
+    from rag.rerankers import CrossEncoderReranker
     from rag.pipelines.rag_v1_dense import RAGv1Dense
     from rag.pipelines.rag_v2_hybrid import RAGv2Hybrid
     from rag.pipelines.rag_v3_multiquery import RAGv3MultiQuery
-    
-    pipeline_classes = {
-        'rag_v1_dense': RAGv1Dense,
-        'rag_v2_hybrid': RAGv2Hybrid,
-        'rag_v3_multiquery': RAGv3MultiQuery,
-    }
-    
-    # Try to import advanced pipelines (may not exist yet)
-    try:
-        from rag.pipelines.rag_v4_parent_child import RAGv4ParentChild
-        pipeline_classes['rag_v4_parent_child'] = RAGv4ParentChild
-    except ImportError:
-        pass
-    
-    try:
-        from rag.pipelines.rag_v5_evidence import RAGv5Evidence
-        pipeline_classes['rag_v5_evidence'] = RAGv5Evidence
-    except ImportError:
-        pass
-    
+
+    from baselines.llm_direct import DeepSeekChatDirectBaseline, DeepSeekReasonerDirectBaseline
+
+    # Index paths
+    index_dir = project_root / "data" / "indices" / corpus_profile / index_strategy
+    chunks_path = index_dir / "chunks.jsonl"
+
+    # Build shared components lazily (only if needed)
+    llm = None
+    dense = None
+    bm25 = None
+    hybrid = None
+    multi_query = None
+    reranker = None
+
+    def ensure_llm():
+        nonlocal llm
+        if llm is None:
+            llm = DeepSeekClient(cache_enabled=True)
+        return llm
+
+    def ensure_indices_exist():
+        if not index_dir.exists():
+            raise FileNotFoundError(
+                f"Index directory not found: {index_dir}. "
+                f"Build indices first, e.g. `python scripts/build_indices.py --strategy {index_strategy}`."
+            )
+        if not chunks_path.exists():
+            raise FileNotFoundError(f"Chunk store not found: {chunks_path}")
+
+    def ensure_dense():
+        nonlocal dense
+        ensure_indices_exist()
+        if dense is None:
+            dense = DenseRetriever(
+                index_dir=str(index_dir),
+                chunks_jsonl_path=str(chunks_path),
+                model_name="intfloat/e5-small-v2",
+                device="cpu",
+            )
+        return dense
+
+    def ensure_bm25():
+        nonlocal bm25
+        ensure_indices_exist()
+        if bm25 is None:
+            bm25 = BM25Retriever(
+                index_dir=str(index_dir),
+                chunks_jsonl_path=str(chunks_path),
+            )
+        return bm25
+
+    def ensure_hybrid():
+        nonlocal hybrid
+        if hybrid is None:
+            hybrid = HybridRetriever(ensure_bm25(), ensure_dense())
+        return hybrid
+
+    def ensure_multi_query():
+        nonlocal multi_query
+        if multi_query is None:
+            multi_query = MultiQueryRetriever(
+                ensure_hybrid(),
+                expansion_strategy="pricing",
+                max_queries=3,
+            )
+        return multi_query
+
+    def ensure_reranker():
+        nonlocal reranker
+        if reranker is None:
+            reranker = CrossEncoderReranker(
+                model_name="cross-encoder/ms-marco-MiniLM-L-6-v2"
+            )
+        return reranker
+
     pipelines = []
     for name in pipeline_names:
-        if name in pipeline_classes:
-            # Initialize pipeline
-            # Note: In production, would pass proper config/dependencies
-            pipeline = pipeline_classes[name]()
-            pipelines.append(pipeline)
+        if name == "rag_v1_dense":
+            pipelines.append(
+                RAGv1Dense(
+                    dense_retriever=ensure_dense(),
+                    llm_client=ensure_llm(),
+                )
+            )
+        elif name == "rag_v2_hybrid":
+            pipelines.append(
+                RAGv2Hybrid(
+                    hybrid_retriever=ensure_hybrid(),
+                    reranker=ensure_reranker(),
+                    llm_client=ensure_llm(),
+                )
+            )
+        elif name == "rag_v3_multiquery":
+            pipelines.append(
+                RAGv3MultiQuery(
+                    multi_query_retriever=ensure_multi_query(),
+                    llm_client=ensure_llm(),
+                    reranker=ensure_reranker(),
+                )
+            )
+        elif name == "baseline_llm_chat":
+            pipelines.append(DeepSeekChatDirectBaseline())
+        elif name == "baseline_llm_reasoner":
+            pipelines.append(DeepSeekReasonerDirectBaseline())
         else:
-            print(f"Warning: Pipeline '{name}' not found, skipping")
-    
+            # Try advanced pipelines if present
+            if name == "rag_v4_parent_child":
+                try:
+                    from rag.pipelines.rag_v4_parent_child import RAGv4ParentChild
+
+                    pipelines.append(
+                        RAGv4ParentChild(
+                            child_retriever=ensure_dense(),
+                            llm_client=ensure_llm(),
+                        )
+                    )
+                except ImportError:
+                    print("Warning: rag_v4_parent_child not available, skipping")
+            elif name == "rag_v5_evidence":
+                try:
+                    from rag.pipelines.rag_v5_evidence import RAGv5Evidence
+
+                    pipelines.append(
+                        RAGv5Evidence(
+                            hybrid_retriever=ensure_hybrid(),
+                            reranker=ensure_reranker(),
+                            llm_client=ensure_llm(),
+                            use_llm_validation=False,
+                        )
+                    )
+                except ImportError:
+                    print("Warning: rag_v5_evidence not available, skipping")
+            else:
+                print(f"Warning: Pipeline '{name}' not found, skipping")
+
     return pipelines
 
 
@@ -142,7 +259,11 @@ def main():
     
     # Load pipelines
     print(f"\nLoading pipelines: {config['pipelines']}")
-    pipelines = load_pipelines(config['pipelines'])
+    pipelines = load_pipelines(
+        config["pipelines"],
+        corpus_profile=config.get("corpus_profile", "public"),
+        index_strategy=config.get("index_strategy", "fixed"),
+    )
     
     if not pipelines:
         print("Error: No pipelines loaded. Check pipeline names and implementation.")

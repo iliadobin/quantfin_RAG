@@ -155,14 +155,21 @@ class CitationGenerator:
         
         # Average score of cited chunks
         avg_score = sum(c.score for c in citations) / len(citations)
-        
-        # Normalize (assuming scores are roughly 0-1 for dense, 0-10+ for BM25)
-        # Use sigmoid-like scaling
-        confidence = min(1.0, avg_score / 2.0) if avg_score < 2.0 else min(1.0, avg_score / 10.0)
+
+        # Normalize (scores may be negative for some rerankers / raw logits).
+        # Keep output strictly within [0, 1] to satisfy Answer.confidence constraints.
+        raw_conf = (avg_score / 2.0) if avg_score < 2.0 else (avg_score / 10.0)
+        try:
+            # Handle NaN / inf defensively
+            if raw_conf != raw_conf or raw_conf == float("inf") or raw_conf == float("-inf"):
+                raw_conf = 0.0
+        except Exception:
+            raw_conf = 0.0
+        confidence = max(0.0, min(1.0, float(raw_conf)))
         
         # Boost if multiple citations
         if len(citations) >= 2:
-            confidence = min(1.0, confidence * 1.2)
+            confidence = max(0.0, min(1.0, confidence * 1.2))
         
         return confidence
     
@@ -192,15 +199,23 @@ class CitationGenerator:
                 metadata={"reason": "empty_retrieval"}
             )
         
-        # Build prompt
+        # Build prompt (keep context bounded to avoid very slow LLM calls)
+        max_context_chunks = int(kwargs.get("max_context_chunks", self.max_context_chunks))
+        max_chunk_chars = int(kwargs.get("max_chunk_chars", 1200))
         user_prompt = prompts.build_qa_prompt(
             query,
             chunks,
-            max_chunks=self.max_context_chunks
+            max_chunks=max_context_chunks,
+            max_chars_per_chunk=max_chunk_chars,
         )
         
         # Generate answer
         try:
+            logger.info(
+                f"LLM generate: model={self.model or 'default'} "
+                f"context_chunks={min(len(chunks), max_context_chunks)} "
+                f"max_tokens={kwargs.get('max_tokens', self.max_tokens)}"
+            )
             response = self.llm_client.chat_completion(
                 messages=[
                     {"role": "system", "content": prompts.SYSTEM_PROMPT},

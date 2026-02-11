@@ -1,0 +1,260 @@
+{
+  "version": "1.0",
+  "name": "FactualDerivativesQA",
+  "description": "Production DS1 for public corpus (real citations)",
+  "examples": [
+    {
+      "id": "ds1_pub_001",
+      "question": "How does RiskMetrics define risk?",
+      "gold_answer": "We define risk as the degree of uncertainty of future net returns.",
+      "gold_citations": [
+        {
+          "doc_id": "riskmetrics_1996",
+          "page_span": {
+            "start_page": 17,
+            "end_page": 17,
+            "start_char": 0,
+            "end_char": 1811
+          },
+          "quote": "ics is a set of methodologies and data for measuring market risk. By market risk, we mean the potential for changes in value of a position resulting from changes in market prices. We define risk as the degree of uncertainty of future net returns. This uncertainty takes many forms, which is why most participants in the financial markets are subject to a variety of risks. A",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "riskmetrics_1996_fixed_f3af0ea17da49a6f"
+        }
+      ],
+      "topic": "risk_definition",
+      "difficulty": "easy",
+      "requires_formula": false,
+      "requires_calculation": false
+    },
+    {
+      "id": "ds1_pub_002",
+      "question": "What is Value-at-Risk (VaR) according to the RiskMetrics technical document?",
+      "gold_answer": "Value-at-Risk is a measure of the maximum potential change in value of a portfolio of financial instruments with a given probability over a pre-set horizon.",
+      "gold_citations": [
+        {
+          "doc_id": "riskmetrics_1996",
+          "page_span": {
+            "start_page": 18,
+            "end_page": 18,
+            "start_char": 0,
+            "end_char": 1801
+          },
+          "quote": "th Edition Reading this chapter requires a basic understanding of statistics. For assistance, readers can refer to the glossary at the end of this document. 1.1 An introduction to Value-at-Risk and RiskMetrics Value-at-Risk is a measure of the maximum potential change in value of a portfolio of financial instruments with a given probability over a pre-set horizon. VaR an",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "riskmetrics_1996_fixed_2d2dbf15b88ec01c"
+        }
+      ],
+      "topic": "var",
+      "difficulty": "easy",
+      "requires_formula": false,
+      "requires_calculation": false
+    },
+    {
+      "id": "ds1_pub_003",
+      "question": "What are the three basic components of RiskMetrics?",
+      "gold_answer": "RiskMetrics has three basic components: • A set of market risk measurement methodologies outlined in this document.",
+      "gold_citations": [
+        {
+          "doc_id": "riskmetrics_1996",
+          "page_span": {
+            "start_page": 3,
+            "end_page": 3,
+            "start_char": 1600,
+            "end_char": 3054
+          },
+          "quote": "set of tools that enable participants in the financial markets to estimate their exposure to market risk under what has been called the “Value-at-Risk framework”. RiskMetrics has three basic components: • A set of market risk measurement methodologies outlined in this document. • Data sets of volatility and correlation data used in the computation of market risk. • Software syst",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "riskmetrics_1996_fixed_49c1f69478e73701"
+        }
+      ],
+      "topic": "riskmetrics_overview",
+      "difficulty": "easy",
+      "requires_formula": false,
+      "requires_calculation": false
+    },
+    {
+      "id": "ds1_pub_004",
+      "question": "In the delta approximation, what does Delta represent?",
+      "gold_answer": "Delta is the first derivative of the option price with respect to the spot exchange rate.",
+      "gold_citations": [
+        {
+          "doc_id": "riskmetrics_1996",
+          "page_span": {
+            "start_page": 24,
+            "end_page": 24,
+            "start_char": 1600,
+            "end_char": 3394
+          },
+          "quote": "duration of their portfolio). The simplest such approximation is to estimate changes in the option value via a linear model, which is commonly known as the ”delta approximation.” Delta is the first derivative of the option price with respect to the spot exchange rate. The value of δ for the option in this example is −0.4919. In the analytical method, we must first write down the return",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "riskmetrics_1996_fixed_8d02944c7a1749bf"
+        }
+      ],
+      "topic": "options_greeks",
+      "difficulty": "medium",
+      "requires_formula": false,
+      "requires_calculation": false
+    },
+    {
+      "id": "ds1_pub_005",
+      "question": "What are the three major steps of the Monte Carlo methodology described by RiskMetrics?",
+      "gold_answer": "The Monte Carlo methodology consists of three major steps: 1.",
+      "gold_citations": [
+        {
+          "doc_id": "riskmetrics_1996",
+          "page_span": {
+            "start_page": 26,
+            "end_page": 26,
+            "start_char": 0,
+            "end_char": 1802
+          },
+          "quote": "on precept where all instruments are marked to market under a large number of scenarios driven by the volatility and correlation estimates. The Monte Carlo methodology consists of three major steps: 1. Scenario generation —Using the volatility and correlation estimates for the underlying assets in our portfolio, we produce a large number of future price scenarios in accordan",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "riskmetrics_1996_fixed_a6f81a03a4c86575"
+        }
+      ],
+      "topic": "monte_carlo",
+      "difficulty": "medium",
+      "requires_formula": false,
+      "requires_calculation": false
+    },
+    {
+      "id": "ds1_pub_006",
+      "question": "What confidence level does the BCBS market risk standard require for Expected Shortfall (ES)?",
+      "gold_answer": "97.5th percentile, one-tailed confidence level.",
+      "gold_citations": [
+        {
+          "doc_id": "bcbs_frtb_2019",
+          "page_span": {
+            "start_page": 95,
+            "end_page": 95,
+            "start_char": 0,
+            "end_char": 1805
+          },
+          "quote": "risk capital requirements. ES must also be computed on a daily basis for each trading desk that uses the internal models approach (IMA). 33.3 In calculating ES, a bank must use a 97.5th percentile, one-tailed confidence level. 33.4 In calculating ES, the liquidity horizons described in [MAR33.12] must be reflected by scaling an ES calculated on a base horizon. The ES for a",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "bcbs_frtb_2019_fixed_15989d015bc6e1c0"
+        }
+      ],
+      "topic": "frtb_es",
+      "difficulty": "easy",
+      "requires_formula": false,
+      "requires_calculation": false
+    },
+    {
+      "id": "ds1_pub_007",
+      "question": "What is a Geometric Brownian Motion (GBM) as defined in the Black-Scholes model paper?",
+      "gold_answer": "A Geometric Brownian Motion (GBM), is a continuous-time stochastic process in which the logarithm of the randomly varying quantity follows a Wiener Process with drift.",
+      "gold_citations": [
+        {
+          "doc_id": "arxiv_2510_27277v1",
+          "page_span": {
+            "start_page": 5,
+            "end_page": 5,
+            "start_char": 0,
+            "end_char": 1005
+          },
+          "quote": "Figure 1: Gaussian increments in the stock market, the future price of a stock is based on a Normal distribution centered on the current value 2.1.1 Geometric Brownian Motion A Geometric Brownian Motion (GBM), is a continuous-time stochastic process in which the logarithm of the randomly varying quantity follows a Wiener Process with drift. A stochasti",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "arxiv_2510_27277v1_fixed_3f775edaedb5326e"
+        }
+      ],
+      "topic": "stochastic_processes",
+      "difficulty": "medium",
+      "requires_formula": false,
+      "requires_calculation": false
+    },
+    {
+      "id": "ds1_pub_008",
+      "question": "What is Ito's lemma, and what does it provide?",
+      "gold_answer": "Ito’s lemma is an identity that gives the differential of a time-dependent function of a stochastic process, it can be seen as the stochastic counterpart of the chain rule for derivatives.",
+      "gold_citations": [
+        {
+          "doc_id": "arxiv_2510_27277v1",
+          "page_span": {
+            "start_page": 6,
+            "end_page": 6,
+            "start_char": 0,
+            "end_char": 1813
+          },
+          "quote": "2.2 Itˆo’s lemma The core mathematical tool that allows the connection between the GBM and the Black-Scholes equation is given by Ito’s lemma. Ito’s lemma is an identity that gives the differential of a time-dependent function of a stochastic process, it can be seen as the stochastic counterpart of the chain rule for derivatives. Given the stochas",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "arxiv_2510_27277v1_fixed_8e43d991bf353f5c"
+        }
+      ],
+      "topic": "stochastic_calculus",
+      "difficulty": "medium",
+      "requires_formula": false,
+      "requires_calculation": false
+    },
+    {
+      "id": "ds1_pub_009",
+      "question": "List key assumptions stated for the underlying asset and market environment in the Black-Scholes paper.",
+      "gold_answer": "characteristics: • The risk-free interest rate is constant",
+      "gold_citations": [
+        {
+          "doc_id": "arxiv_2510_27277v1",
+          "page_span": {
+            "start_page": 3,
+            "end_page": 3,
+            "start_char": 0,
+            "end_char": 1802
+          },
+          "quote": "K. It is of European style and can be exercised only at expiration date T. Further, the underlying asset price and the related market environment denoted by St have the following characteristics: • The risk-free interest rate is constant",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "arxiv_2510_27277v1_fixed_96b45f632853720c"
+        }
+      ],
+      "topic": "black_scholes_assumptions",
+      "difficulty": "medium",
+      "requires_formula": false,
+      "requires_calculation": false
+    },
+    {
+      "id": "ds1_pub_010",
+      "question": "Which numerical method is used to approximate option pricing PDE solutions in the stochastic volatility paper (Hao et al.)?",
+      "gold_answer": "finite difference methods to approximate prices for European call and up-and-out barrier options, and outline the numerical implementation for fixed-strike Asian call options.",
+      "gold_citations": [
+        {
+          "doc_id": "arxiv_2408_15416v1",
+          "page_span": {
+            "start_page": 1,
+            "end_page": 1,
+            "start_char": 0,
+            "end_char": 1812
+          },
+          "quote": "abolic PDE and extend our model to encompass fixed-strike Asian options, yielding a new PDE. In the absence of closed-form solutions for any options from our new model, we utilize finite difference methods to approximate prices for European call and up-and-out barrier options, and outline the numerical implementation for fixed-strike Asian call options. 1. Introduction In this paper",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "arxiv_2408_15416v1_fixed_36f9740293937eab"
+        }
+      ],
+      "topic": "numerical_methods",
+      "difficulty": "easy",
+      "requires_formula": false,
+      "requires_calculation": false
+    }
+  ],
+  "total_examples": 10,
+  "topics_distribution": {
+    "risk_definition": 1,
+    "var": 1,
+    "riskmetrics_overview": 1,
+    "options_greeks": 1,
+    "monte_carlo": 1,
+    "frtb_es": 1,
+    "stochastic_processes": 1,
+    "stochastic_calculus": 1,
+    "black_scholes_assumptions": 1,
+    "numerical_methods": 1
+  }
+}

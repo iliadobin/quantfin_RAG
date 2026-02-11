@@ -20,6 +20,9 @@ pipelines:
   - rag_v1_dense
   - rag_v2_hybrid
   - rag_v3_multiquery
+  # Baselines (no RAG)
+  # - baseline_llm_chat
+  # - baseline_llm_reasoner
   # - rag_v4_parent_child
   # - rag_v5_evidence
 

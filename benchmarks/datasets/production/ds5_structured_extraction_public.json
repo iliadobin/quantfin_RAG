@@ -1,0 +1,210 @@
+{
+  "version": "1.0",
+  "name": "StructuredExtraction",
+  "description": "Production DS5 structured extraction for public corpus (real schema/output)",
+  "examples": [
+    {
+      "id": "ds5_pub_001",
+      "question": "Extract the three basic components of RiskMetrics as a JSON list.",
+      "structured_output": {
+        "extraction_type": "classification",
+        "output_schema": {
+          "type": "object",
+          "properties": {
+            "components": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "components"
+          ]
+        },
+        "gold_output": {
+          "components": [
+            "A set of market risk measurement methodologies outlined in this document.",
+            "Data sets of volatility and correlation data used in the computation of market risk.",
+            "Software systems developed by J.P.Morgan, subsidiaries of Reuters, and third party vendors"
+          ]
+        }
+      },
+      "gold_citations": [
+        {
+          "doc_id": "riskmetrics_1996",
+          "page_span": {
+            "start_page": 3,
+            "end_page": 3,
+            "start_char": 1600,
+            "end_char": 3054
+          },
+          "quote": "set of tools that enable participants in the financial markets to estimate their exposure to market risk under what has been called the “Value-at-Risk framework”. RiskMetrics has three basic components: • A set of market risk measurement methodologies outlined in this document. • Data sets of volatility and correlation data used in the computation of market risk. • Software syst",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "riskmetrics_1996_fixed_49c1f69478e73701"
+        }
+      ],
+      "required_fields": [
+        "components"
+      ],
+      "optional_fields": []
+    },
+    {
+      "id": "ds5_pub_002",
+      "question": "Extract the Black-Scholes market/underlying assumptions listed in the paper as JSON.",
+      "structured_output": {
+        "extraction_type": "assumptions",
+        "output_schema": {
+          "type": "object",
+          "properties": {
+            "assumptions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "assumptions"
+          ]
+        },
+        "gold_output": {
+          "assumptions": [
+            "The risk-free interest rate is constant"
+          ]
+        }
+      },
+      "gold_citations": [
+        {
+          "doc_id": "arxiv_2510_27277v1",
+          "page_span": {
+            "start_page": 3,
+            "end_page": 3,
+            "start_char": 0,
+            "end_char": 1802
+          },
+          "quote": "K. It is of European style and can be exercised only at expiration date T. Further, the underlying asset price and the related market environment denoted by St have the following characteristics: • The risk-free interest rate is constant",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "arxiv_2510_27277v1_fixed_96b45f632853720c"
+        }
+      ],
+      "required_fields": [
+        "assumptions"
+      ],
+      "optional_fields": []
+    },
+    {
+      "id": "ds5_pub_003",
+      "question": "Extract the confidence level requirement for Expected Shortfall (ES) from the BCBS standard.",
+      "structured_output": {
+        "extraction_type": "parameter_ranges",
+        "output_schema": {
+          "type": "object",
+          "properties": {
+            "confidence_level": {
+              "type": "number"
+            },
+            "tail": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "confidence_level",
+            "tail"
+          ]
+        },
+        "gold_output": {
+          "confidence_level": 97.5,
+          "tail": "one-tailed"
+        }
+      },
+      "gold_citations": [
+        {
+          "doc_id": "bcbs_frtb_2019",
+          "page_span": {
+            "start_page": 95,
+            "end_page": 95,
+            "start_char": 0,
+            "end_char": 1805
+          },
+          "quote": "risk capital requirements. ES must also be computed on a daily basis for each trading desk that uses the internal models approach (IMA). 33.3 In calculating ES, a bank must use a 97.5th percentile, one-tailed confidence level. 33.4 In calculating ES, the liquidity horizons described in [MAR33.12] must be reflected by scaling an ES calculated on a base horizon. The ES for a",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "bcbs_frtb_2019_fixed_15989d015bc6e1c0"
+        }
+      ],
+      "required_fields": [
+        "confidence_level",
+        "tail"
+      ],
+      "optional_fields": []
+    },
+    {
+      "id": "ds5_pub_004",
+      "question": "Extract the Geometric Brownian Motion (GBM) SDE parameters mentioned in the definition as JSON.",
+      "structured_output": {
+        "extraction_type": "formula",
+        "output_schema": {
+          "type": "object",
+          "properties": {
+            "sde": {
+              "type": "string"
+            },
+            "mu_symbol": {
+              "type": "string"
+            },
+            "sigma_symbol": {
+              "type": "string"
+            },
+            "wiener_symbol": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "sde",
+            "mu_symbol",
+            "sigma_symbol",
+            "wiener_symbol"
+          ]
+        },
+        "gold_output": {
+          "sde": "dSt = μSt dt + σSt dWt",
+          "mu_symbol": "μ",
+          "sigma_symbol": "σ",
+          "wiener_symbol": "Wt"
+        }
+      },
+      "gold_citations": [
+        {
+          "doc_id": "arxiv_2510_27277v1",
+          "page_span": {
+            "start_page": 5,
+            "end_page": 5,
+            "start_char": 0,
+            "end_char": 1005
+          },
+          "quote": "the randomly varying quantity follows a Wiener Process with drift. A stochastic process St is said to follow a GBM if it satisfies the following stochastic differential equation: dSt = μStdt + σStdWt (1) where Wt is a Wiener Process, μ is the drift, and σ is the volatility. The former parameter is used to model deterministic trends, so expected changes in St,",
+          "score": 1.0,
+          "retriever_tag": "gold",
+          "chunk_id": "arxiv_2510_27277v1_fixed_3f775edaedb5326e"
+        }
+      ],
+      "required_fields": [
+        "sde",
+        "mu_symbol",
+        "sigma_symbol",
+        "wiener_symbol"
+      ],
+      "optional_fields": []
+    }
+  ],
+  "total_examples": 4,
+  "extraction_types_distribution": {
+    "classification": 1,
+    "assumptions": 1,
+    "parameter_ranges": 1,
+    "formula": 1
+  }
+}

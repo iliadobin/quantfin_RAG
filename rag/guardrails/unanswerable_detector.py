@@ -65,6 +65,7 @@ class UnanswerableDetector:
     def __init__(
         self,
         min_retrieval_score: float = 0.1,
+        min_fusion_score: float = 0.01,
         max_results_check: int = 5
     ):
         """
@@ -72,9 +73,12 @@ class UnanswerableDetector:
         
         Args:
             min_retrieval_score: Minimum score threshold for top result
+            min_fusion_score: Minimum score threshold for fusion-style retrievers
+                (e.g. reciprocal-rank-fusion scores are typically ~0.01–0.03 for top hits).
             max_results_check: Number of top results to check
         """
         self.min_retrieval_score = min_retrieval_score
+        self.min_fusion_score = min_fusion_score
         self.max_results_check = max_results_check
     
     def _check_query_patterns(self, query: str) -> Optional[str]:
@@ -122,8 +126,19 @@ class UnanswerableDetector:
         
         # Check top result score
         top_score = chunks[0].score if chunks else 0.0
-        if top_score < self.min_retrieval_score:
-            logger.info(f"Top retrieval score too low: {top_score:.3f}")
+        top_tag = (chunks[0].retriever_tag or "").lower()
+
+        # Hybrid/multi-query fusion scores are on a very different scale than cosine/BM25.
+        # Avoid refusing everything just because score < 0.1 when using RRF.
+        threshold = self.min_retrieval_score
+        if top_tag in {"hybrid", "multi_query", "parent_child"}:
+            threshold = self.min_fusion_score
+
+        if top_score < threshold:
+            logger.info(
+                f"Top retrieval score too low: {top_score:.3f} < {threshold:.3f} "
+                f"(tag={top_tag or 'unknown'})"
+            )
             return "low_retrieval_confidence"
         
         return None

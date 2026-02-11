@@ -5,7 +5,6 @@ import logging
 from pathlib import Path
 from typing import List, Optional, Dict, Any
 import numpy as np
-import faiss
 from sentence_transformers import SentenceTransformer
 
 from knowledge.models import Chunk, RetrievedChunk
@@ -42,27 +41,31 @@ class DenseRetriever:
         self.chunks_jsonl_path = Path(chunks_jsonl_path)
         self.model_name = model_name
         self.device = device
-        
-        # Load FAISS index
+
+        # IMPORTANT (macOS / some Python builds):
+        # Importing FAISS before torch/sentence-transformers can cause a segfault during encode().
+        # So we initialize the embedding model first, then import/load FAISS.
+        logger.info(f"Loading embedding model: {model_name}")
+        self.encoder = SentenceTransformer(model_name, device=device)
+
+        # Load FAISS index (lazy import to avoid import-order crashes)
+        import faiss  # noqa: WPS433 (runtime import is intentional)
+
         index_path = self.index_dir / "faiss.index"
         if not index_path.exists():
             raise FileNotFoundError(f"FAISS index not found: {index_path}")
         self.index = faiss.read_index(str(index_path))
         logger.info(f"Loaded FAISS index: {self.index.ntotal} vectors")
-        
+
         # Load chunk IDs
         chunk_ids_path = self.index_dir / "chunk_ids.npy"
         if not chunk_ids_path.exists():
             raise FileNotFoundError(f"Chunk IDs not found: {chunk_ids_path}")
         self.chunk_ids = np.load(chunk_ids_path, allow_pickle=True).tolist()
-        
+
         # Load chunks
         self.chunks_dict = self._load_chunks()
         logger.info(f"Loaded {len(self.chunks_dict)} chunks")
-        
-        # Load embedding model
-        logger.info(f"Loading embedding model: {model_name}")
-        self.encoder = SentenceTransformer(model_name, device=device)
     
     def _load_chunks(self) -> Dict[str, Chunk]:
         """Load chunks from JSONL into dict."""

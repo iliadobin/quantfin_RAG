@@ -1,0 +1,199 @@
+{
+  "version": "1.0",
+  "name": "RetrievalQrels",
+  "description": "Production DS2 qrels for public corpus (real chunk_id)",
+  "examples": [
+    {
+      "id": "ds2_pub_001",
+      "query": "Definition of Value-at-Risk (VaR)",
+      "qrels": [
+        {
+          "chunk_id": "riskmetrics_1996_fixed_2d2dbf15b88ec01c",
+          "relevance": 2,
+          "doc_id": "riskmetrics_1996",
+          "page_span": {
+            "start_page": 18,
+            "end_page": 18,
+            "start_char": 0,
+            "end_char": 1801
+          }
+        }
+      ],
+      "query_type": "definition",
+      "expected_num_relevant": 1
+    },
+    {
+      "id": "ds2_pub_002",
+      "query": "RiskMetrics definition of risk",
+      "qrels": [
+        {
+          "chunk_id": "riskmetrics_1996_fixed_f3af0ea17da49a6f",
+          "relevance": 2,
+          "doc_id": "riskmetrics_1996",
+          "page_span": {
+            "start_page": 17,
+            "end_page": 17,
+            "start_char": 0,
+            "end_char": 1811
+          }
+        }
+      ],
+      "query_type": "definition",
+      "expected_num_relevant": 1
+    },
+    {
+      "id": "ds2_pub_003",
+      "query": "RiskMetrics three basic components",
+      "qrels": [
+        {
+          "chunk_id": "riskmetrics_1996_fixed_49c1f69478e73701",
+          "relevance": 2,
+          "doc_id": "riskmetrics_1996",
+          "page_span": {
+            "start_page": 3,
+            "end_page": 3,
+            "start_char": 1600,
+            "end_char": 3054
+          }
+        }
+      ],
+      "query_type": "definition",
+      "expected_num_relevant": 1
+    },
+    {
+      "id": "ds2_pub_004",
+      "query": "Delta approximation definition (first derivative of option price)",
+      "qrels": [
+        {
+          "chunk_id": "riskmetrics_1996_fixed_8d02944c7a1749bf",
+          "relevance": 2,
+          "doc_id": "riskmetrics_1996",
+          "page_span": {
+            "start_page": 24,
+            "end_page": 24,
+            "start_char": 1600,
+            "end_char": 3394
+          }
+        }
+      ],
+      "query_type": "definition",
+      "expected_num_relevant": 1
+    },
+    {
+      "id": "ds2_pub_005",
+      "query": "Monte Carlo methodology steps RiskMetrics",
+      "qrels": [
+        {
+          "chunk_id": "riskmetrics_1996_fixed_a6f81a03a4c86575",
+          "relevance": 2,
+          "doc_id": "riskmetrics_1996",
+          "page_span": {
+            "start_page": 26,
+            "end_page": 26,
+            "start_char": 0,
+            "end_char": 1802
+          }
+        }
+      ],
+      "query_type": "procedure",
+      "expected_num_relevant": 1
+    },
+    {
+      "id": "ds2_pub_006",
+      "query": "Expected Shortfall confidence level 97.5 one-tailed",
+      "qrels": [
+        {
+          "chunk_id": "bcbs_frtb_2019_fixed_15989d015bc6e1c0",
+          "relevance": 2,
+          "doc_id": "bcbs_frtb_2019",
+          "page_span": {
+            "start_page": 95,
+            "end_page": 95,
+            "start_char": 0,
+            "end_char": 1805
+          }
+        }
+      ],
+      "query_type": "definition",
+      "expected_num_relevant": 1
+    },
+    {
+      "id": "ds2_pub_007",
+      "query": "Geometric Brownian Motion definition and SDE",
+      "qrels": [
+        {
+          "chunk_id": "arxiv_2510_27277v1_fixed_3f775edaedb5326e",
+          "relevance": 2,
+          "doc_id": "arxiv_2510_27277v1",
+          "page_span": {
+            "start_page": 5,
+            "end_page": 5,
+            "start_char": 0,
+            "end_char": 1005
+          }
+        }
+      ],
+      "query_type": "definition",
+      "expected_num_relevant": 1
+    },
+    {
+      "id": "ds2_pub_008",
+      "query": "Ito's lemma definition and formula",
+      "qrels": [
+        {
+          "chunk_id": "arxiv_2510_27277v1_fixed_8e43d991bf353f5c",
+          "relevance": 2,
+          "doc_id": "arxiv_2510_27277v1",
+          "page_span": {
+            "start_page": 6,
+            "end_page": 6,
+            "start_char": 0,
+            "end_char": 1813
+          }
+        }
+      ],
+      "query_type": "definition",
+      "expected_num_relevant": 1
+    },
+    {
+      "id": "ds2_pub_009",
+      "query": "Black-Scholes assumptions risk-free rate no dividends no transaction costs",
+      "qrels": [
+        {
+          "chunk_id": "arxiv_2510_27277v1_fixed_96b45f632853720c",
+          "relevance": 2,
+          "doc_id": "arxiv_2510_27277v1",
+          "page_span": {
+            "start_page": 3,
+            "end_page": 3,
+            "start_char": 0,
+            "end_char": 1802
+          }
+        }
+      ],
+      "query_type": "procedure",
+      "expected_num_relevant": 1
+    },
+    {
+      "id": "ds2_pub_010",
+      "query": "finite difference methods for option pricing PDE",
+      "qrels": [
+        {
+          "chunk_id": "arxiv_2408_15416v1_fixed_36f9740293937eab",
+          "relevance": 2,
+          "doc_id": "arxiv_2408_15416v1",
+          "page_span": {
+            "start_page": 1,
+            "end_page": 1,
+            "start_char": 0,
+            "end_char": 1812
+          }
+        }
+      ],
+      "query_type": "methods",
+      "expected_num_relevant": 1
+    }
+  ],
+  "total_examples": 10,
+  "total_qrels": 10
+}

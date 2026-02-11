@@ -19,7 +19,7 @@ Requirements:
 Do not use external knowledge. Only use information from the context provided."""
 
 
-def format_context(chunks, max_chunks: int = 10) -> str:
+def format_context(chunks, max_chunks: int = 10, max_chars_per_chunk: int = 1200) -> str:
     """
     Format retrieved chunks as context.
     
@@ -36,15 +36,18 @@ def format_context(chunks, max_chunks: int = 10) -> str:
         chunk = retrieved.chunk
         doc_id = chunk.doc_id
         page_info = f"pp. {chunk.page_span.start_page}-{chunk.page_span.end_page}"
-        
+        text = chunk.text or ""
+        if max_chars_per_chunk and len(text) > max_chars_per_chunk:
+            text = text[:max_chars_per_chunk].rstrip() + "\n… (truncated)"
+
         context_parts.append(
-            f"[{i}] Source: {doc_id}, {page_info}\n{chunk.text}\n"
+            f"[{i}] Source: {doc_id}, {page_info}\n{text}\n"
         )
     
     return "\n".join(context_parts)
 
 
-def build_qa_prompt(query: str, chunks, max_chunks: int = 10) -> str:
+def build_qa_prompt(query: str, chunks, max_chunks: int = 10, max_chars_per_chunk: int = 1200) -> str:
     """
     Build user prompt for QA with citations.
     
@@ -56,7 +59,7 @@ def build_qa_prompt(query: str, chunks, max_chunks: int = 10) -> str:
     Returns:
         Formatted user prompt
     """
-    context = format_context(chunks, max_chunks)
+    context = format_context(chunks, max_chunks, max_chars_per_chunk=max_chars_per_chunk)
     
     return f"""Context documents:
 

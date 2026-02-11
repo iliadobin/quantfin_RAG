@@ -64,6 +64,8 @@ class HybridRetriever:
         """
         # Compute RRF scores
         fusion_scores: Dict[str, float] = defaultdict(float)
+        bm25_contrib: Dict[str, float] = defaultdict(float)
+        dense_contrib: Dict[str, float] = defaultdict(float)
         chunk_map: Dict[str, RetrievedChunk] = {}
         
         # Add BM25 scores
@@ -71,6 +73,7 @@ class HybridRetriever:
             chunk_id = retrieved.chunk.id
             rrf_score = self.bm25_weight / (self.rrf_k + rank)
             fusion_scores[chunk_id] += rrf_score
+            bm25_contrib[chunk_id] += rrf_score
             
             if chunk_id not in chunk_map:
                 chunk_map[chunk_id] = retrieved
@@ -80,6 +83,7 @@ class HybridRetriever:
             chunk_id = retrieved.chunk.id
             rrf_score = self.dense_weight / (self.rrf_k + rank)
             fusion_scores[chunk_id] += rrf_score
+            dense_contrib[chunk_id] += rrf_score
             
             if chunk_id not in chunk_map:
                 chunk_map[chunk_id] = retrieved
@@ -101,8 +105,8 @@ class HybridRetriever:
                 score=fusion_scores[chunk_id],
                 retriever_tag="hybrid",
                 metadata={
-                    "bm25_score": fusion_scores.get(chunk_id, 0.0),
-                    "dense_score": fusion_scores.get(chunk_id, 0.0),
+                    "bm25_score": bm25_contrib.get(chunk_id, 0.0),
+                    "dense_score": dense_contrib.get(chunk_id, 0.0),
                     "original_retriever": retrieved.retriever_tag
                 }
             ))

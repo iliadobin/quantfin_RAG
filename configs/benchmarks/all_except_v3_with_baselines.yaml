@@ -1,0 +1,64 @@
+# Benchmark config: run all RAG pipelines except v3, plus LLM-direct baselines.
+#
+# Pipelines:
+#   - RAG: v1, v2, v4, v5
+#   - Baselines: DeepSeek Chat direct, DeepSeek Reasoner direct
+#
+# Notes:
+# - Baselines have NO retrieval and NO citations by design.
+# - DS2 (RetrievalQrels) is not meaningful for baselines; they will produce empty retrieved lists.
+
+version: "1.0"
+
+corpus_profile: "public"
+index_strategy: "fixed"
+
+datasets:
+  - ds1
+  - ds2
+  - ds3
+  - ds4
+  - ds5
+
+pipelines:
+  - rag_v1_dense
+  - rag_v2_hybrid
+  - rag_v4_parent_child
+  - rag_v5_evidence
+  - baseline_llm_chat
+  - baseline_llm_reasoner
+
+pipeline_params:
+  # Retrieval params used by RAG pipelines (ignored by baselines)
+  top_k: 20
+  rerank_top_k: 10
+
+  # Generation params used by both RAG generators and baselines
+  temperature: 0.0
+  max_tokens: 1500
+
+evaluation:
+  compute_llm_judge: false
+  judge_batch_size: 5
+  judge_sample_rate: 1.0
+
+cache:
+  enable_prediction_cache: true
+  enable_embedding_cache: true
+
+output:
+  run_name: "all_except_v3_with_baselines"
+  output_dir: "data/runs"
+  save_predictions: true
+  generate_reports: true
+
+token_budget:
+  max_total_tokens: 2000000
+  warn_threshold: 1600000
+  enable_monitoring: true
+
+reproducibility:
+  seed: 42
+  deterministic: true
+
+

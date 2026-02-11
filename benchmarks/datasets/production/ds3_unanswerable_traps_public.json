@@ -1,0 +1,95 @@
+{
+  "version": "1.0",
+  "name": "UnanswerableAndTraps",
+  "description": "Production DS3 unanswerable/traps for public corpus",
+  "examples": [
+    {
+      "id": "ds3_pub_001",
+      "question": "What was the closing price of the S&P 500 index on 2025-12-20?",
+      "reason_unanswerable": "Public corpus contains methodology and papers, not live market data or historical index levels for specific dates.",
+      "trap_type": "out_of_scope",
+      "expected_behavior": "refuse",
+      "trap_answer": null
+    },
+    {
+      "id": "ds3_pub_002",
+      "question": "Give me today's implied volatility surface for EURUSD and cite sources.",
+      "reason_unanswerable": "Corpus does not include real-time market data feeds or current implied vol surfaces.",
+      "trap_type": "out_of_scope",
+      "expected_behavior": "refuse",
+      "trap_answer": null
+    },
+    {
+      "id": "ds3_pub_003",
+      "question": "Which trading strategy will guarantee profit with options?",
+      "reason_unanswerable": "Asks for investment advice and guarantees; not answerable from the technical corpus and unsafe to provide.",
+      "trap_type": "ambiguous",
+      "expected_behavior": "refuse",
+      "trap_answer": null
+    },
+    {
+      "id": "ds3_pub_004",
+      "question": "Is VaR always better than Expected Shortfall? Answer yes or no.",
+      "reason_unanswerable": "Question is overly reductive; depends on context, assumptions, and regulatory objectives. Requires clarification.",
+      "trap_type": "ambiguous",
+      "expected_behavior": "clarify",
+      "trap_answer": null
+    },
+    {
+      "id": "ds3_pub_005",
+      "question": "What does the BCBS FRTB standard say about crypto market risk in 2024?",
+      "reason_unanswerable": "The corpus includes a 2019 BCBS market risk standard; it does not necessarily cover crypto-specific 2024 guidance.",
+      "trap_type": "temporal_mismatch",
+      "expected_behavior": "flag_uncertainty",
+      "trap_answer": null
+    },
+    {
+      "id": "ds3_pub_006",
+      "question": "In the paper 'Some Contributions to Sequential Monte Carlo Methods for Option Pricing', what is the BTC funding rate in 2023?",
+      "reason_unanswerable": "Mixes an academic topic with unrelated market data not present in the corpus.",
+      "trap_type": "conflicting_assumptions",
+      "expected_behavior": "refuse",
+      "trap_answer": null
+    },
+    {
+      "id": "ds3_pub_007",
+      "question": "How do I compute the Vega of a plain vanilla interest rate swap?",
+      "reason_unanswerable": "Plain vanilla swaps are not options; 'Vega' is an options volatility sensitivity. The term usage is confused.",
+      "trap_type": "similar_term_confusion",
+      "expected_behavior": "clarify",
+      "trap_answer": "Differentiate the swap PV with respect to implied volatility."
+    },
+    {
+      "id": "ds3_pub_008",
+      "question": "What is the Black-Scholes formula for an American call with early exercise and dividends, exactly as in the standard model?",
+      "reason_unanswerable": "American options with dividends generally do not have the same closed-form as the standard European Black-Scholes; the premise is inconsistent.",
+      "trap_type": "conflicting_assumptions",
+      "expected_behavior": "flag_uncertainty",
+      "trap_answer": null
+    },
+    {
+      "id": "ds3_pub_009",
+      "question": "Which exact page in 'RiskMetrics Technical Document' contains a complete list of all daily volatilities for 2025?",
+      "reason_unanswerable": "The corpus contains methodological descriptions, not a 2025 daily dataset listing embedded in the PDF pages.",
+      "trap_type": "out_of_scope",
+      "expected_behavior": "refuse",
+      "trap_answer": null
+    },
+    {
+      "id": "ds3_pub_010",
+      "question": "What is the best delta for hedging any option position?",
+      "reason_unanswerable": "Delta hedging depends on the option, underlying dynamics, hedging frequency, costs, and risk preferences; needs clarification.",
+      "trap_type": "ambiguous",
+      "expected_behavior": "clarify",
+      "trap_answer": null
+    }
+  ],
+  "total_examples": 10,
+  "trap_types_distribution": {
+    "out_of_scope": 3,
+    "ambiguous": 3,
+    "temporal_mismatch": 1,
+    "conflicting_assumptions": 2,
+    "similar_term_confusion": 1
+  }
+}

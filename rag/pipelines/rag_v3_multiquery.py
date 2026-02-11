@@ -87,7 +87,10 @@ class RAGv3MultiQuery:
         start_time = time.time()
         
         # Override defaults
-        retrieval_top_k = kwargs.get('retrieval_top_k', self.retrieval_top_k)
+        # NOTE: benchmark runner passes `top_k` as a generic pipeline param.
+        # For v3, treat it as retrieval_top_k to avoid double-passing `top_k`
+        # into MultiQueryRetriever.retrieve().
+        retrieval_top_k = kwargs.get('retrieval_top_k', kwargs.get('top_k', self.retrieval_top_k))
         rerank_top_k = kwargs.get('rerank_top_k', self.rerank_top_k)
         use_rerank = kwargs.get('use_rerank', self.reranker is not None)
         
@@ -109,7 +112,16 @@ class RAGv3MultiQuery:
         
         # Step 1: Multi-query retrieval with fusion
         retrieval_start = time.time()
-        fused_chunks = self.multi_query_retriever.retrieve(query, top_k=retrieval_top_k)
+        # Pass through kwargs so callers can tune multi-query retrieval
+        # (e.g., per_query_k, bm25_top_k, dense_top_k).
+        # Avoid passing `top_k` twice (explicit + kwargs)
+        mq_kwargs = dict(kwargs)
+        mq_kwargs.pop("top_k", None)
+        fused_chunks = self.multi_query_retriever.retrieve(
+            query,
+            top_k=retrieval_top_k,
+            **mq_kwargs,
+        )
         retrieval_time = (time.time() - retrieval_start) * 1000
         
         # Get expanded queries from metadata (if available)
@@ -150,7 +162,8 @@ class RAGv3MultiQuery:
         
         # Step 3: Generate answer
         generation_start = time.time()
-        answer = self.generator.generate(query, final_chunks)
+        # Pass through kwargs so callers can tune generation (max_tokens, max_context_chunks, etc.)
+        answer = self.generator.generate(query, final_chunks, **kwargs)
         generation_time = (time.time() - generation_start) * 1000
         
         logger.info(f"Generated answer in {generation_time:.1f}ms with {len(answer.citations)} citations")
